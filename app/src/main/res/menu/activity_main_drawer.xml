@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_favoritas"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            android:title="Favoritas" />
+        <item
+            android:id="@+id/nav_estacoes"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="Todas as  Estações" />
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/ic_place_black_24dp"
+            android:title="Mapa" />
+        <item
+            android:id="@+id/nav_emergencia"
+            android:icon="@drawable/ic_error_black_24dp"
+            android:title="Emergência" />
+            />
+        <item
+            android:id="@+id/nav_cartilha"
+            android:icon="@drawable/ic_question_answer_black_24dp"
+            android:title="Cartilha" />
+        <item
+            android:id="@+id/nav_Sobre"
+            android:icon="@drawable/ic_assistant_photo_black_24dp"
+            android:title="Sobre" />
+        <item
+            android:id="@+id/nav_Compartilhe"
+            android:icon="@drawable/ic_share_black_24dp"
+            android:title="Compartilhe" />
+
+
+
+    </group>
+
+
+</menu>
