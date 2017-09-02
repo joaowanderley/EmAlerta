@@ -1,5 +1,9 @@
 package br.com.emalerta.emalerta;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,6 +33,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.geojson.GeoJsonFeature;
+import com.google.maps.android.geojson.GeoJsonLayer;
+import com.google.maps.android.geojson.GeoJsonPolygonStyle;
 
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +48,11 @@ public class MainActivity extends AppCompatActivity
 
     private GoogleMap mMap;
 
+    private GeoJsonLayer alLayer;
+
+    private SupportMapFragment mapFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SupportMapFragment mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
 
@@ -61,17 +73,31 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
 
+
+        //new ProgressTask(this).execute();
+    }
+        // inicio manipulação do mapa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng sydney = new LatLng(-9.399754, -35.801556);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng alagoas = new LatLng(-9.731095, -36.560825);
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(alagoas, 8));
+        mMap.getUiSettings().setRotateGesturesEnabled(false);
+
     }
 
+    //
+    public void alterarEstiloMapa(GeoJsonLayer alLayer){
+
+            alLayer.addLayerToMap();
+            GeoJsonPolygonStyle estiloLinha = alLayer.getDefaultPolygonStyle();
+            estiloLinha.setStrokeWidth(2);
+            estiloLinha.setFillColor(getResources().getColor(R.color.myAzul));
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -132,6 +158,48 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+public class ProgressTask extends AsyncTask<Void, Void, Boolean>{
+
+    private ProgressDialog dialog;
+    private Context context;
+
+        public ProgressTask(Context context){
+            this.context=context;
+        }
+
+    @Override
+    protected void onPreExecute() {
+        dialog = new ProgressDialog(context);
+        dialog.setMessage("Carregando Mapa");
+        dialog.show();
+    }
+
+    @Override
+    protected Boolean doInBackground(final Void... args) {
+
+        try{
+
+            alLayer = new GeoJsonLayer(alLayer.getMap(), R.raw.alagoas, getApplicationContext());
+
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+
+            return false;
+        }
+
+    }
+
+    @Override
+    protected void onPostExecute(final Boolean sucess) {
+       alterarEstiloMapa(alLayer);
+
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
+    }
+}
 
 
 }
