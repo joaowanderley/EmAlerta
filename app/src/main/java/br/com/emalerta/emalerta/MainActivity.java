@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(new Tab_Favoritas(), "Favorita");
         adapter.addFragment(new Tab_Estacoes(), "Estações");
         adapter.addFragment(new Tab_Map(), "Mapa");
-        adapter.addFragment(new tab_emergencia(), "Emergencia");
+        adapter.addFragment(new tab_emergencia(), "Emergência");
         viewPager.setAdapter(adapter);
     }
 
