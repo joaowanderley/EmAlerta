@@ -10,8 +10,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
     }
     buildTypes {
+        repositories {
+            maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -27,7 +32,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
     testCompile 'junit:junit:4.12'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
     compile 'com.google.maps.android:android-maps-utils:0.4+'
+
 }
