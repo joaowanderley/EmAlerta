@@ -1,4 +1,4 @@
-package br.com.emalerta.emalerta;
+package br.com.emalerta.emalerta.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +31,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import br.com.emalerta.emalerta.R;
 import br.com.emalerta.emalerta.tabs.SectionsPageAdapter;
 import br.com.emalerta.emalerta.tabs.Tab_Estacoes;
 import br.com.emalerta.emalerta.tabs.Tab_Favoritas;
