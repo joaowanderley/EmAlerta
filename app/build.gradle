@@ -3,12 +3,14 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "26.0.1"
+
     defaultConfig {
         applicationId "br.com.emalerta.emalerta"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -36,5 +38,6 @@ dependencies {
     compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
     compile 'com.google.maps.android:android-maps-utils:0.4.+'
+    compile 'com.jjoe64:graphview:4.2.1'
     testCompile 'junit:junit:4.12'
 }

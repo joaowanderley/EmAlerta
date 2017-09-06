@@ -1,16 +1,10 @@
 package br.com.emalerta.emalerta;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,9 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,22 +20,23 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.geojson.GeoJsonFeature;
+import com.google.maps.android.geojson.GeoJsonLayer;
+import com.google.maps.android.geojson.GeoJsonPolygonStyle;
 
-import br.com.emalerta.emalerta.tabs.SectionsPageAdapter;
-import br.com.emalerta.emalerta.tabs.Tab_Estacoes;
-import br.com.emalerta.emalerta.tabs.Tab_Favoritas;
-import br.com.emalerta.emalerta.tabs.Tab_Map;
-import br.com.emalerta.emalerta.tabs.tab_emergencia;
+
 
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
 
-    private SectionsPageAdapter mSectionsPageAdapter;
-
     private ViewPager mViewPager;
+
+    private GoogleMap mMap;
+    private GeoJsonLayer alLayer;
+    private GeoJsonLayer escolaAL;
+    private SupportMapFragment mapFragment;
 
 
     @Override
@@ -68,38 +60,30 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        //adapter.addFragment(new Tab_Favoritas(), R.drawable.ic_favorite_black_24dp);
-        //adapter.addFragment(new Tab_Estacoes(), R.drawable.ic_list_black_24dp);
-        //adapter.addFragment(new Tab_Map(), R.drawable.ic_place_black_24dp);
-        //adapter.addFragment(new tab_emergencia(), R.drawable.ic_error_black_24dp);
-        adapter.addFragment(new Tab_Favoritas(), "Favorita");
-        adapter.addFragment(new Tab_Estacoes(), "Estações");
-        adapter.addFragment(new Tab_Map(), "Mapa");
-        adapter.addFragment(new tab_emergencia(), "Emergência");
-        viewPager.setAdapter(adapter);
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-       /* mMap = googleMap;
 
-        LatLng sydney = new LatLng(-9.399754, -35.801556);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+        mMap = googleMap;
+
+        LatLng alagoas = new LatLng(-9.731095, -36.560825);
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(alagoas, 8));
+        mMap.getUiSettings().setRotateGesturesEnabled(false);
     }
+   /* public void alterarStyleMap(GeoJsonLayer alLayer){
 
+        alLayer.addLayerToMap();
+        GeoJsonPolygonStyle estiloLinha = alLayer.getDefaultPolygonStyle();
+        estiloLinha.setStrokeWidth(2);
+
+        estiloLinha.setFillColor(getResources().getColor(R.color.myAzul));
+
+
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -133,6 +117,53 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+   /* public class ProgressTask extends AssyncTask<Void, Void, Boolean> {
+        private ProgressDialog dialog;
+        private Context context;
+
+        public ProgressTask(Context context) {
+            this.context = context;
+    }
+
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(context);
+            dialog.setMessage("Carregando dados do Mapa");
+            dialog.show();
+
+        }
+        protected Boolean doInBackground(final Void... args) {
+        try{
+            alLayer = new GeoJsonLayer(mapFragment.getMap(), R.raw.alagoas, getApplicationContext());
+
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+     }
+        protected void protected void onPostExecute(final Boolean success) {
+            alterarStyleMap(alLayer);
+
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+
+            alLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
+                @Override
+                public void onFeatureClick(GeoJsonFeature geoJsonFeature) {
+                    String municipio = geoJsonFeature.getProperty("NM_MUNICIP");
+                    String idh = geoJsonFeature.getProperty("IDH");
+                    String cod = geoJsonFeature.getProperty("CD_GEOCMU");
+                   // Toast.makeText(getBaseContext(), geoJsonFeature.getProperty("NM_MUNICIP"), Toast.LENGTH_SHORT).show();
+                  //  mensagem(municipio, "IDH: " + idh, cod);
+
+
+                }
+            });
+
+
+        }
+}*/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
