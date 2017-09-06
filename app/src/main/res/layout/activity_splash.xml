@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#062166"
-    tools:context="br.com.emalerta.emalerta.SplashActivity">
+    tools:context="br.com.emalerta.emalerta.View.SplashActivity">
 
 
     <ImageView
