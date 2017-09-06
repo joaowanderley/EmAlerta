@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import br.com.emalerta.emalerta.View.MainActivity;
 import br.com.emalerta.emalerta.R;
 
 //Classe criada para apresentação da logo do aplicativo

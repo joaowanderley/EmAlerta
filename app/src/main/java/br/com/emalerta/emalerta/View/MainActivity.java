@@ -1,4 +1,4 @@
-package br.com.emalerta.emalerta;
+package br.com.emalerta.emalerta.View;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -24,6 +24,7 @@ import com.google.maps.android.geojson.GeoJsonFeature;
 import com.google.maps.android.geojson.GeoJsonLayer;
 import com.google.maps.android.geojson.GeoJsonPolygonStyle;
 
+import br.com.emalerta.emalerta.R;
 
 
 public class MainActivity extends AppCompatActivity
