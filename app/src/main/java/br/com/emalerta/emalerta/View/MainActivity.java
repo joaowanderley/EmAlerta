@@ -2,6 +2,7 @@ package br.com.emalerta.emalerta.View;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -180,7 +181,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_mapa) {
 
         } else if (id == R.id.nav_emergencia) {
-
+            //Chama uma nova tela
+            Intent i = new Intent(MainActivity.this, EmergenciaActivity.class);
+            startActivity(i);
         }
         /*else if (id == R.id.nav_share) {
 

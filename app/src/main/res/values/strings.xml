@@ -8,4 +8,5 @@
     <string name="title_activity_estacoes">ActivityEstacoes</string>
     <string name="btnStr">Calcular</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_emergencia">EmergenciaActivity</string>
 </resources>
