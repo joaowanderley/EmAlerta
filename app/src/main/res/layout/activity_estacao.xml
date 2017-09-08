@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
-    tools:context="br.com.emalerta.emalerta.View.EmergenciaActivity">
+    tools:context="br.com.emalerta.emalerta.View.EstacaoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_emergencia" />
+    <include layout="@layout/content_estacao" />
 
 </android.support.design.widget.CoordinatorLayout>

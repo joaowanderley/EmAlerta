@@ -32,10 +32,11 @@ public class EmergenciaAdapter extends ArrayAdapter<Orgao>{
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linhaemergencia, parent, false);
+
         TextView nomeOrgao = (TextView) rowView.findViewById(R.id.txtOrgao);
         TextView telefone = (TextView) rowView.findViewById(R.id.txtTelefone);
         TextView site = (TextView) rowView.findViewById(R.id.txtSite);
-        ImageView imagem = (ImageView) rowView.findViewById(R.id.imgEmergencia);
+        ImageView imagem = (ImageView) rowView.findViewById(R.id.imgOrgao);
 
         nomeOrgao.setText(elementos.get(position).getNomeOrgao());
         telefone.setText(elementos.get(position).getTelefone());

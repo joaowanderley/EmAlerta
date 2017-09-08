@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(getApplicationContext(), "Eita, esqueci de implementar. =(", Toast.LENGTH_LONG).show();
             return true;
         }
 
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity
 
         protected void onPreExecute() {
             dialog = new ProgressDialog(context);
-            dialog.setMessage("Carregando dados do Mapa");
+            dialog.setMessage("Carregando Estações...");
             dialog.show();
 
         }
@@ -178,29 +179,41 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_favoritas) {
-            Toast.makeText(getApplicationContext(), "Aba estações favoritas", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Logo estará pronta. =)", Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_estacoes) {
-            /*Intent it = new Intent(this, Tab_Estacoes.class);
-            startActivity(it);*/
+            //Chama a tela que lista as estações
+            Intent i = new Intent(MainActivity.this, EstacaoActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_mapa) {
 
         } else if (id == R.id.nav_emergencia) {
-            //Chama uma nova tela
+            //Chama a tela que lista os orgãos de emergência
             Intent i = new Intent(MainActivity.this, EmergenciaActivity.class);
             startActivity(i);
-        }
-        /*else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_cartilha) {
+            Toast.makeText(getApplicationContext(), "Vai ficar legal isso aqui. Espero. ;)", Toast.LENGTH_LONG).show();
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_Sobre) {
+            Toast.makeText(getApplicationContext(), "Em desenvolvimento! ;)", Toast.LENGTH_LONG).show();
 
+        } else if (id == R.id.nav_Compartilhe) {
+            Intent compartilhar = new Intent(android.content.Intent.ACTION_SEND);
+            compartilhar.setType("text/plain");
+            compartilhar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+            compartilhar.putExtra(Intent.EXTRA_SUBJECT,
+                               "Níveis dos Rios, alerta de cheia. ");
+            compartilhar.putExtra(Intent.EXTRA_TEXT,
+                    "Oi! Baixe o Em Alerta e saiba em tempo real as condições dos rios no Estado de Alagoas. " +
+                            "Acesse emalerta.com.br");
+
+            startActivity(Intent.createChooser(compartilhar, "Compartilhar"));
         }
-       */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }
