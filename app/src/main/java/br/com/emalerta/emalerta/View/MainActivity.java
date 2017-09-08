@@ -3,6 +3,7 @@ package br.com.emalerta.emalerta.View;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SupportMapFragment mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
 
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+       new ProgressTask(this).execute();
 
 
     }
@@ -78,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(alagoas, 8));
         mMap.getUiSettings().setRotateGesturesEnabled(false);
     }
-   /* public void alterarStyleMap(GeoJsonLayer alLayer){
+    public void alterarStyleMap(GeoJsonLayer alLayer){
 
         alLayer.addLayerToMap();
         GeoJsonPolygonStyle estiloLinha = alLayer.getDefaultPolygonStyle();
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         estiloLinha.setFillColor(getResources().getColor(R.color.myAzul));
 
 
-    }*/
+    }
 
     @Override
     public void onBackPressed() {
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-   /* public class ProgressTask extends AssyncTask<Void, Void, Boolean> {
+    public class ProgressTask extends AsyncTask<Void, Void, Boolean> {
         private ProgressDialog dialog;
         private Context context;
 
@@ -145,7 +148,7 @@ public class MainActivity extends AppCompatActivity
             return false;
         }
      }
-        protected void protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(final Boolean success) {
             alterarStyleMap(alLayer);
 
             if (dialog.isShowing()) {
@@ -155,9 +158,9 @@ public class MainActivity extends AppCompatActivity
             alLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
                 @Override
                 public void onFeatureClick(GeoJsonFeature geoJsonFeature) {
-                    String municipio = geoJsonFeature.getProperty("NM_MUNICIP");
-                    String idh = geoJsonFeature.getProperty("IDH");
-                    String cod = geoJsonFeature.getProperty("CD_GEOCMU");
+                  //  String municipio = geoJsonFeature.getProperty("NM_MUNICIP");
+                   // String idh = geoJsonFeature.getProperty("IDH");
+                  //  String cod = geoJsonFeature.getProperty("CD_GEOCMU");
                    // Toast.makeText(getBaseContext(), geoJsonFeature.getProperty("NM_MUNICIP"), Toast.LENGTH_SHORT).show();
                   //  mensagem(municipio, "IDH: " + idh, cod);
 
@@ -167,7 +170,7 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-}*/
+}
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
