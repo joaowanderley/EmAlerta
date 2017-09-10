@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity
             compartilhar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
             compartilhar.putExtra(Intent.EXTRA_SUBJECT,
-                               "Níveis dos Rios, alerta de cheia. ");
+                               "Aplicativo Em Alerta. ");
             compartilhar.putExtra(Intent.EXTRA_TEXT,
                     "Oi! Baixe o Em Alerta e saiba em tempo real as condições dos rios no Estado de Alagoas. " +
                             "Acesse emalerta.com.br");

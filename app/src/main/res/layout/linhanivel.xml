@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_nivel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <ImageView
+        android:id="@+id/imgSituacaoList"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/com_chuva" />
+
+    <TextView
+        android:id="@+id/txtNivelList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgSituacaoList"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_toEndOf="@+id/imgSituacaoList"
+        android:layout_toRightOf="@+id/imgSituacaoList"
+        android:text="168" />
+
+    <TextView
+        android:id="@+id/txtDataList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24/08/2017 01:15"
+        android:layout_alignBaseline="@+id/txtNivelList"
+        android:layout_alignBottom="@+id/txtNivelList"
+        android:layout_toRightOf="@+id/txtNivelList"
+        android:layout_toEndOf="@+id/txtNivelList"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:id="@+id/txtSituacaoList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtDataList"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:text="Normal" />
+</RelativeLayout>

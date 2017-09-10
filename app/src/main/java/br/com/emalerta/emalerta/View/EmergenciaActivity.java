@@ -10,12 +10,14 @@ import android.text.Spannable;
 import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import br.com.emalerta.emalerta.DAO.EmergenciaDAO;
 import br.com.emalerta.emalerta.Model.EmergenciaAdapter;
 import br.com.emalerta.emalerta.Model.Orgao;
 import br.com.emalerta.emalerta.R;
@@ -35,9 +37,9 @@ public class EmergenciaActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Lista de Emergência"); // Titulo para ser exibido
         // Fim implementação botão voltar
 
-
+        EmergenciaDAO listarEmergencia = new EmergenciaDAO();
         ListView lista = (ListView) findViewById(R.id.lvEmergencia);
-        ArrayList<Orgao> emergencias = adicionarOrgaos();
+        ArrayList<Orgao> emergencias = listarEmergencia.adicionarOrgaos();
         ArrayAdapter adapter = new EmergenciaAdapter(this, emergencias);
         lista.setAdapter(adapter);
     }
@@ -53,37 +55,4 @@ public class EmergenciaActivity extends AppCompatActivity {
         }
         return true;
     }
-
-    private ArrayList<Orgao> adicionarOrgaos(){
-        ArrayList<Orgao> orgaoLista = new ArrayList<Orgao>();
-
-        for(int i = 0; i<emergencia.length; i++){
-            Orgao orgaoNovo = new Orgao();
-
-            orgaoNovo.setNomeOrgao(emergencia[i][0]);
-            orgaoNovo.setTelefone(emergencia[i][1]);
-            orgaoNovo.setSite(emergencia[i][2]);
-            orgaoNovo.setImagem(imagem_emergencia[i]);
-
-            orgaoLista.add(orgaoNovo);
-        }
-
-        return orgaoLista;
-    }
-
-    private String [][] emergencia = new String[][]{
-            {"Defesa Civil","3315-2843 | 3315-2822","defesacivil.al.gov.br"},
-            {"Corpo de Bombeiro Militar","193","cbm.al.gov.br"},
-            {"Semarh","3315-2680","semarh.al.gov.br"},
-            {"Polícia Militar","190","pm.al.gov.br"},
-            {"SAMU","192","saude.al.gov.br/samu"},
-    };
-
-    private int[] imagem_emergencia = new int[]{
-            R.drawable.defesacivil,
-            R.drawable.cbm,
-            R.drawable.semarh,
-            R.drawable.pmal,
-            R.drawable.samu,
-    };
 }

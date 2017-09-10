@@ -10,7 +10,7 @@
         <item
             android:id="@+id/nav_estacoes"
             android:icon="@drawable/ic_list_black_24dp"
-            android:title="Todas as  Estações" />
+            android:title="Todas as Estações" />
         <item
             android:id="@+id/nav_mapa"
             android:icon="@drawable/ic_place_black_24dp"
@@ -32,10 +32,5 @@
             android:id="@+id/nav_Compartilhe"
             android:icon="@drawable/ic_share_black_24dp"
             android:title="Compartilhe" />
-
-
-
     </group>
-
-
 </menu>
