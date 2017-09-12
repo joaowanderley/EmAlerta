@@ -23,8 +23,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.plus.model.people.Person;
+import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.geojson.GeoJsonFeature;
 import com.google.maps.android.geojson.GeoJsonLayer;
+import com.google.maps.android.geojson.GeoJsonPointStyle;
 import com.google.maps.android.geojson.GeoJsonPolygonStyle;
 
 import br.com.emalerta.emalerta.R;
@@ -34,8 +38,6 @@ import br.com.emalerta.emalerta.R;
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
 
-
-    //private ViewPager mViewPager;
 
     private GoogleMap mMap;
     private GeoJsonLayer alLayer;
@@ -78,8 +80,41 @@ public class MainActivity extends AppCompatActivity
 
         LatLng alagoas = new LatLng(-9.731095, -36.560825);
 
+        LatLng jacuipe = new LatLng(-8.8411, -35.4469);
+        LatLng portoCalvo = new LatLng(-9.0103, -35.435);
+        LatLng santanaMundau = new LatLng(-9.1678, -36.2175);
+        LatLng saoJose = new LatLng(-9.0042, -36.051);
+        LatLng uniao = new LatLng(-9.1831, -36.0436);
+        LatLng rioLargo = new LatLng(-9.4672, -35.8597);
+        LatLng quebrangulo = new LatLng(-9.3656, -36.4194);
+        LatLng pauloJacinto = new LatLng(-9.3686, -36.3747);
+        LatLng vicosa = new LatLng(-9.3792,-36.2492);
+        LatLng cajueiro = new LatLng(-9.3756, -36.1608);
+        LatLng capela = new LatLng(-9.38888, -36.11);
+        LatLng atalaia = new LatLng(-9.5067, -36.0228);
+        LatLng anadia = new LatLng(-9.6858, -36.2853);
+        LatLng limoeiro = new LatLng(-9.7436, -36.5039);
+
+
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(alagoas, 8));
         mMap.getUiSettings().setRotateGesturesEnabled(false);
+
+        // marcadores cidades
+        mMap.addMarker(new MarkerOptions().position(jacuipe).title("Jacuípe"));
+
+        mMap.addMarker(new MarkerOptions().position(portoCalvo).title("Porto Calvo").snippet("Estação de Porto Calvo"));
+        mMap.addMarker(new MarkerOptions().position(santanaMundau).title("Santana do Mundaú"));
+        mMap.addMarker(new MarkerOptions().position(saoJose).title("São José da Laje"));
+        mMap.addMarker(new MarkerOptions().position(uniao).title("Usina Laginha"));
+        mMap.addMarker(new MarkerOptions().position(rioLargo).title("Fazenda Boa Fortuna"));
+        mMap.addMarker(new MarkerOptions().position(quebrangulo).title("Vila São Francisco"));
+        mMap.addMarker(new MarkerOptions().position(pauloJacinto).title("Paulo Jacinto"));
+        mMap.addMarker(new MarkerOptions().position(vicosa).title("Viçosa"));
+        mMap.addMarker(new MarkerOptions().position(cajueiro).title("Cajueiro"));
+        mMap.addMarker(new MarkerOptions().position(capela).title("Capela"));
+        mMap.addMarker(new MarkerOptions().position(atalaia).title("Atalaia"));
+        mMap.addMarker(new MarkerOptions().position(anadia).title("Fazenda São Pedro"));
+        mMap.addMarker(new MarkerOptions().position(limoeiro).title("Limoeiro de Anadia"));
     }
     public void alterarStyleMap(GeoJsonLayer alLayer){
 
@@ -88,7 +123,15 @@ public class MainActivity extends AppCompatActivity
         estiloLinha.setStrokeWidth(2);
 
         estiloLinha.setFillColor(getResources().getColor(R.color.myAzul));
+/*
 
+        GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
+        // Set options for the point style
+        pointStyle.setIcon(pointIcon);
+        pointStyle.setTitle("Magnitude of " + magnitude);
+        pointStyle.setSnippet("Earthquake occured " + feature.getProperty("place"));
+
+        */
 
     }
 
@@ -159,13 +202,9 @@ public class MainActivity extends AppCompatActivity
             alLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
                 @Override
                 public void onFeatureClick(GeoJsonFeature geoJsonFeature) {
-                  //  String municipio = geoJsonFeature.getProperty("NM_MUNICIP");
-                   // String idh = geoJsonFeature.getProperty("IDH");
-                  //  String cod = geoJsonFeature.getProperty("CD_GEOCMU");
-                   // Toast.makeText(getBaseContext(), geoJsonFeature.getProperty("NM_MUNICIP"), Toast.LENGTH_SHORT).show();
-                  //  mensagem(municipio, "IDH: " + idh, cod);
 
-
+                 Intent it = new Intent(MainActivity.this, EstacaoActivity.class);
+                    startActivity(it);
                 }
             });
 
@@ -186,7 +225,8 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, EstacaoActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_mapa) {
-
+            Intent i = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_emergencia) {
             //Chama a tela que lista os orgãos de emergência
             Intent i = new Intent(MainActivity.this, EmergenciaActivity.class);
