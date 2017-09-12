@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.emalerta.emalerta.View.NivelActivity"
+    tools:showIn="@layout/activity_nivel">
+
+
+    <Button
+        android:id="@+id/btnHoje"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="88dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+        android:text="Hoje"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_editor_absoluteX="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/lvNivel"
+        android:layout_alignStart="@+id/lvNivel"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
+
+    <Button
+        android:id="@+id/btn1h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 hora"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_alignTop="@+id/btnHoje"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btn3h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 horas"
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_alignTop="@+id/btn1h"
+        android:layout_alignRight="@+id/dateDe"
+        android:layout_alignEnd="@+id/dateDe" />
+
+    <TextView
+        android:id="@+id/txtPeriodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Período: "
+        android:textColor="#062166"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="95dp"
+        android:layout_alignBottom="@+id/dateA"
+        android:layout_alignLeft="@+id/btnHoje"
+        android:layout_alignStart="@+id/btnHoje" />
+
+    <EditText
+        android:id="@+id/dateA"
+        android:layout_width="121dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="83dp"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/btnHoje"
+        android:layout_toRightOf="@+id/btnHoje"
+        android:layout_toEndOf="@+id/btnHoje" />
+
+    <EditText
+        android:id="@+id/dateDe"
+        android:layout_width="121dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="83dp"
+        android:layout_alignBaseline="@+id/dateA"
+        android:layout_alignBottom="@+id/dateA"
+        android:layout_toRightOf="@+id/btn1h"
+        android:layout_toEndOf="@+id/btn1h" />
+
+    <TextView
+        android:id="@+id/txtSituacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Situação"
+        android:textColor="#062166"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="287dp"
+        tools:layout_editor_absoluteY="151dp"
+        android:layout_alignBaseline="@+id/txtDataeHora"
+        android:layout_alignBottom="@+id/txtDataeHora"
+        android:layout_alignRight="@+id/dateDe"
+        android:layout_alignEnd="@+id/dateDe" />
+
+    <TextView
+        android:id="@+id/txtDataeHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data e Hora"
+        android:textColor="#062166"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="151dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignBaseline="@+id/txtNivelcm"
+        android:layout_alignBottom="@+id/txtNivelcm"
+        android:layout_toLeftOf="@+id/btn3h"
+        android:layout_toStartOf="@+id/btn3h" />
+
+    <TextView
+        android:id="@+id/txtNivelcm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nível (cm)"
+        android:textColor="#062166"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="151dp"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/txtPeriodo"
+        android:layout_toLeftOf="@+id/btn1h"
+        android:layout_toStartOf="@+id/btn1h" />
+
+    <ListView
+        android:id="@+id/lvNivel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtDataeHora"
+        android:layout_marginTop="19dp" />
+
+</RelativeLayout>

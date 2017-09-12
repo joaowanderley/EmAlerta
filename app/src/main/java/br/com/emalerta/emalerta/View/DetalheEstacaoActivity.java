@@ -47,6 +47,26 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         tvMunicipioDetalhe.setText(valores.getStringExtra("municipio"));
         tvRioDetalhe.setText(valores.getStringExtra("rio"));
         tvImagem.setImageResource(Integer.parseInt(valores.getStringExtra("img")));
+
+
+        ImageView ImgNivelRio = (ImageView) findViewById(R.id.imgNivel);
+        TextView TextNivelRio = (TextView) findViewById(R.id.txtNiveldoRio);
+
+
+        ImgNivelRio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaNivel = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
+                startActivity(telaNivel);
+            }
+        });
+        TextNivelRio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaNivel = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
+                startActivity(telaNivel);
+            }
+        });
     }
 
     @Override

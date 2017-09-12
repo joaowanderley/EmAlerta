@@ -41,6 +41,10 @@
         <activity
             android:name=".View.DetalheEstacaoActivity"
             android:label="@string/title_activity_detalhe_estacao"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.NivelActivity"
+            android:label="@string/title_activity_nivel"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
