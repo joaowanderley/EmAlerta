@@ -56,6 +56,7 @@ public class EstacaoActivity extends AppCompatActivity {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("nomeestacao", estacaoSelecionada.getNomeEstacao());
+                bundle.putString("codestacao", estacaoSelecionada.getCodEstacao());
                 bundle.putString("municipio", estacaoSelecionada.getMunicipio());
                 bundle.putString("rio", estacaoSelecionada.getNomeRio());
                 bundle.putString("img", String.valueOf(estacaoSelecionada.getImagem()));

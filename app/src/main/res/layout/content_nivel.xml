@@ -44,8 +44,8 @@
         tools:layout_editor_absoluteX="266dp"
         tools:layout_editor_absoluteY="16dp"
         android:layout_alignTop="@+id/btn1h"
-        android:layout_alignRight="@+id/dateDe"
-        android:layout_alignEnd="@+id/dateDe" />
+        android:layout_alignRight="@+id/dateA"
+        android:layout_alignEnd="@+id/dateA" />
 
     <TextView
         android:id="@+id/txtPeriodo"
@@ -57,35 +57,38 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="28dp"
         tools:layout_editor_absoluteY="95dp"
-        android:layout_alignBottom="@+id/dateA"
+        android:layout_alignBottom="@+id/dateDe"
         android:layout_alignLeft="@+id/btnHoje"
         android:layout_alignStart="@+id/btnHoje" />
 
     <EditText
-        android:id="@+id/dateA"
+        android:id="@+id/dateDe"
+        style="@android:style/Widget.Material.EditText"
         android:layout_width="121dp"
         android:layout_height="47dp"
+        android:layout_below="@+id/btnHoje"
+        android:layout_marginTop="19dp"
+        android:layout_toEndOf="@+id/btnHoje"
+        android:layout_toRightOf="@+id/btnHoje"
         android:ems="10"
         android:inputType="date"
+        android:singleLine="false"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/btnHoje"
-        android:layout_toRightOf="@+id/btnHoje"
-        android:layout_toEndOf="@+id/btnHoje" />
+        tools:layout_editor_absoluteY="83dp" />
 
     <EditText
-        android:id="@+id/dateDe"
+        android:id="@+id/dateA"
+        style="@android:style/Widget.Material.EditText"
         android:layout_width="121dp"
         android:layout_height="47dp"
+        android:layout_alignBaseline="@+id/dateDe"
+        android:layout_alignBottom="@+id/dateDe"
+        android:layout_toEndOf="@+id/btn1h"
+        android:layout_toRightOf="@+id/btn1h"
         android:ems="10"
         android:inputType="date"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:layout_alignBaseline="@+id/dateA"
-        android:layout_alignBottom="@+id/dateA"
-        android:layout_toRightOf="@+id/btn1h"
-        android:layout_toEndOf="@+id/btn1h" />
+        tools:layout_editor_absoluteY="83dp" />
 
     <TextView
         android:id="@+id/txtSituacao"
@@ -96,10 +99,11 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="287dp"
         tools:layout_editor_absoluteY="151dp"
-        android:layout_alignBaseline="@+id/txtDataeHora"
-        android:layout_alignBottom="@+id/txtDataeHora"
-        android:layout_alignRight="@+id/dateDe"
-        android:layout_alignEnd="@+id/dateDe" />
+        android:layout_above="@+id/lvNivel"
+        android:layout_alignRight="@+id/dateA"
+        android:layout_alignEnd="@+id/dateA"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp" />
 
     <TextView
         android:id="@+id/txtDataeHora"

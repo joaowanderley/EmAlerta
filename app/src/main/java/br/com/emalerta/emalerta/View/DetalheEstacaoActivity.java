@@ -33,17 +33,18 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         // Fim implementação botão voltar
 
         //associa os campos criados na activity
-        TextView tvEstacaoDetalhe = (TextView)findViewById(R.id.txtEstacaoDetalhe);
+        final TextView tvEstacaoDetalhe = (TextView)findViewById(R.id.txtEstacaoDetalhe);
         TextView tvMunicipioDetalhe = (TextView)findViewById(R.id.txtMunicipioDetalhe);
         TextView tvRioDetalhe = (TextView)findViewById(R.id.txtRioDetalhe);
         ImageView tvImagem = (ImageView) findViewById(R.id.imgEstacaoDetalhe);
 
 
         //cria uma nova intenção para buscar os dados enviados pela activityanterior
-        Intent valores = getIntent();
+        final Intent valores = getIntent();
 
         //pega os valores enviados da activityanterior e preenche os campos
         tvEstacaoDetalhe.setText(valores.getStringExtra("nomeestacao"));
+        final String codigoEstacao = valores.getStringExtra("codestacao");
         tvMunicipioDetalhe.setText(valores.getStringExtra("municipio"));
         tvRioDetalhe.setText(valores.getStringExtra("rio"));
         tvImagem.setImageResource(Integer.parseInt(valores.getStringExtra("img")));
@@ -56,8 +57,11 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         ImgNivelRio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent telaNivel = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
-                startActivity(telaNivel);
+                Bundle bundle = new Bundle();
+                bundle.putString("codestacao", codigoEstacao);
+                Intent intent = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         TextNivelRio.setOnClickListener(new View.OnClickListener() {

@@ -31,6 +31,10 @@ import com.google.maps.android.geojson.GeoJsonLayer;
 import com.google.maps.android.geojson.GeoJsonPointStyle;
 import com.google.maps.android.geojson.GeoJsonPolygonStyle;
 
+import java.util.ArrayList;
+
+import br.com.emalerta.emalerta.DAO.EstacaoDAO;
+import br.com.emalerta.emalerta.Model.Estacao;
 import br.com.emalerta.emalerta.R;
 
 // extends BaseDemoAcitivity
@@ -94,27 +98,38 @@ public class MainActivity extends AppCompatActivity
         LatLng atalaia = new LatLng(-9.5067, -36.0228);
         LatLng anadia = new LatLng(-9.6858, -36.2853);
         LatLng limoeiro = new LatLng(-9.7436, -36.5039);
+        LatLng maraial = new LatLng(-8.8967, -35.7678);
+        LatLng canhotinho = new LatLng(-8.8825, -36.2186);
+        LatLng palmeirina = new LatLng(-9.0019, -36.3264);
+        LatLng correntes = new LatLng(-9.1242, -36.3392);
+        LatLng brejao = new LatLng(-9.0394, -36.5983);
 
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(alagoas, 8));
         mMap.getUiSettings().setRotateGesturesEnabled(false);
 
-        // marcadores cidades
-        mMap.addMarker(new MarkerOptions().position(jacuipe).title("Jacuípe"));
 
+
+        // marcadores cidades
+        mMap.addMarker(new MarkerOptions().position(jacuipe).title("Jacuípe").snippet("Estação de Jacuípe"));
         mMap.addMarker(new MarkerOptions().position(portoCalvo).title("Porto Calvo").snippet("Estação de Porto Calvo"));
-        mMap.addMarker(new MarkerOptions().position(santanaMundau).title("Santana do Mundaú"));
-        mMap.addMarker(new MarkerOptions().position(saoJose).title("São José da Laje"));
-        mMap.addMarker(new MarkerOptions().position(uniao).title("Usina Laginha"));
-        mMap.addMarker(new MarkerOptions().position(rioLargo).title("Fazenda Boa Fortuna"));
-        mMap.addMarker(new MarkerOptions().position(quebrangulo).title("Vila São Francisco"));
-        mMap.addMarker(new MarkerOptions().position(pauloJacinto).title("Paulo Jacinto"));
-        mMap.addMarker(new MarkerOptions().position(vicosa).title("Viçosa"));
-        mMap.addMarker(new MarkerOptions().position(cajueiro).title("Cajueiro"));
-        mMap.addMarker(new MarkerOptions().position(capela).title("Capela"));
-        mMap.addMarker(new MarkerOptions().position(atalaia).title("Atalaia"));
-        mMap.addMarker(new MarkerOptions().position(anadia).title("Fazenda São Pedro"));
-        mMap.addMarker(new MarkerOptions().position(limoeiro).title("Limoeiro de Anadia"));
+        mMap.addMarker(new MarkerOptions().position(santanaMundau).title("Santana do Mundaú").snippet("Estação de Santana do Mundaú-AL"));
+        mMap.addMarker(new MarkerOptions().position(saoJose).title("São José da Laje").snippet("Estação de São José da Lage-AL"));
+        mMap.addMarker(new MarkerOptions().position(uniao).title("Usina Laginha").snippet("Estação de União dos Palmares-AL"));
+        mMap.addMarker(new MarkerOptions().position(rioLargo).title("Fazenda Boa Fortuna").snippet("Estação de Rio Largo-AL"));
+        mMap.addMarker(new MarkerOptions().position(quebrangulo).title("Vila São Francisco").snippet("Estação de Quebrangulo-AL"));
+        mMap.addMarker(new MarkerOptions().position(pauloJacinto).title("Paulo Jacinto").snippet("Estação de Paulo Jacinto-AL"));
+        mMap.addMarker(new MarkerOptions().position(vicosa).title("Viçosa").snippet("Estação de Viçosa-AL"));
+        mMap.addMarker(new MarkerOptions().position(cajueiro).title("Cajueiro").snippet("Estação de Cajueiro-AL"));
+        mMap.addMarker(new MarkerOptions().position(capela).title("Capela").snippet("Estação de Capela-AL"));
+        mMap.addMarker(new MarkerOptions().position(atalaia).title("Atalaia").snippet("Estação de Atalaia-AL"));
+        mMap.addMarker(new MarkerOptions().position(anadia).title("Fazenda São Pedro").snippet("Estação de Anadia-AL"));
+        mMap.addMarker(new MarkerOptions().position(limoeiro).title("Limoeiro de Anadia").snippet("Estação de Limoeiro de Anadia-AL"));
+        mMap.addMarker(new MarkerOptions().position(maraial).title("Sítio Cachoeira").snippet("Estação de Canhotinho-PE"));
+        mMap.addMarker(new MarkerOptions().position(canhotinho).title("Canhotinho").snippet("Estação de Canhotinho-PE"));
+        mMap.addMarker(new MarkerOptions().position(palmeirina).title("Palmeirina").snippet("Estação de Palmeirina-PE"));
+        mMap.addMarker(new MarkerOptions().position(correntes).title("Correntes II").snippet("Estação de Correntes-PE"));
+        mMap.addMarker(new MarkerOptions().position(brejao).title("Brejão").snippet("Estação de Brejão-PE"));
     }
     public void alterarStyleMap(GeoJsonLayer alLayer){
 
@@ -203,8 +218,8 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onFeatureClick(GeoJsonFeature geoJsonFeature) {
 
-                 Intent it = new Intent(MainActivity.this, EstacaoActivity.class);
-                    startActivity(it);
+                 //Intent it = new Intent(MainActivity.this, EstacaoActivity.class);
+                    //startActivity(it);
                 }
             });
 
