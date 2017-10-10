@@ -3,6 +3,8 @@ package br.com.emalerta.emalerta.View;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -15,7 +17,7 @@ import br.com.emalerta.emalerta.Controll.CallerDados;
 import br.com.emalerta.emalerta.Model.DadoHistorico;
 import br.com.emalerta.emalerta.R;
 
-public class NivelActivity extends AppCompatActivity {
+public class GraficoActivity extends AppCompatActivity {
 
     public static  String rslt = null;
     public static  DadoHistorico[] rsltDados = null;
@@ -23,7 +25,7 @@ public class NivelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nivel);
+        setContentView(R.layout.activity_grafico);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,31 +35,31 @@ public class NivelActivity extends AppCompatActivity {
         //pega os valores enviados da activityanterior e preenche os campos
         final String codigoEstacao = valores.getStringExtra("codestacao");
 
-        Button consultarNivel = (Button)findViewById(R.id.btnConsultar);
+        Button consultarGrafico = (Button)findViewById(R.id.btnConsultarGrafico);
 
         final AlertDialog ad = new AlertDialog.Builder(this).create();
 
-        consultarNivel.setOnClickListener(new View.OnClickListener() {
+        consultarGrafico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CallSoapDados2 cs = new CallSoapDados2();
                 try{
 
-                    EditText data1Nivel = (EditText)findViewById(R.id.editDeA);
-                    EditText data2Nivel = (EditText)findViewById(R.id.editAteA);
+                    EditText data1Grafico = (EditText)findViewById(R.id.editDeAGrafico);
+                    EditText data2Grafico  = (EditText)findViewById(R.id.editAteAGrafico);
 
                     String codEstacao = codigoEstacao;
-                    String dataInicio = data1Nivel.getText().toString();
-                    String dataFim    = data2Nivel.getText().toString();
+                    String dataInicio = data1Grafico.getText().toString();
+                    String dataFim    = data2Grafico.getText().toString();
 
                     rslt = "START";
-                    CallerDados cNivel = new CallerDados();
-                    cNivel.codEstacao = codEstacao;
-                    cNivel.dataInicio = dataInicio;
-                    cNivel.dataFim    = dataFim;
+                    CallerDados cGrafico = new CallerDados();
+                    cGrafico.codEstacao = codEstacao;
+                    cGrafico.dataInicio = dataInicio;
+                    cGrafico.dataFim    = dataFim;
 
-                    cNivel.join();
-                    cNivel.start();
+                    cGrafico.join();
+                    cGrafico.start();
                     while(rslt == "START") {
                         try {
                             Thread.sleep(10);
@@ -75,7 +77,7 @@ public class NivelActivity extends AppCompatActivity {
                     ad.setTitle("Estação: " + codEstacao);
 
                     //Testando
-                    ad.setMessage("Nível: " + rsltDados[0].nivel + " | Data e Hora: " + rsltDados[0].dataHora);
+                    ad.setMessage("Nivel: " + rsltDados[0].nivel + " | Chuva: " + rsltDados[0].chuva + " | Data e Hora: " + rsltDados[0].dataHora);
 
                 }catch(Exception ex){
                     ad.setTitle("Error!");
@@ -87,10 +89,11 @@ public class NivelActivity extends AppCompatActivity {
             }
         });
 
+
         // Implementação botão voltar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar o botão
         getSupportActionBar().setHomeButtonEnabled(true); // Ativando o botão
-        getSupportActionBar().setTitle("Nível da Estação"); // Titulo para ser exibido
+        getSupportActionBar().setTitle("Gráfico"); // Titulo para ser exibido
         // Fim implementação botão voltar
 
     }

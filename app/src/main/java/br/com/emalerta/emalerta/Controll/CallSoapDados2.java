@@ -52,7 +52,7 @@ public class CallSoapDados2 {
         envelope.setOutputSoapObject(request);
 
         HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS);
-        DadoHistorico[] response=null;
+        DadoHistorico[] response = null;
 
         try
         {

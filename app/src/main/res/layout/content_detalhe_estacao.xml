@@ -103,18 +103,18 @@
         android:layout_marginEnd="29dp" />
 
     <TextView
-        android:id="@+id/txtNivelRio"
+        android:id="@+id/txtGrafico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imgGrafico"
+        android:layout_alignLeft="@+id/imgGrafico"
+        android:layout_alignRight="@+id/imgGrafico"
+        android:layout_alignStart="@+id/imgGrafico"
+        android:layout_below="@+id/imgGrafico"
         android:text="Gráfico"
         android:textColor="#062166"
         android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/imgGrafico"
-        android:layout_alignRight="@+id/imgGrafico"
-        android:layout_alignEnd="@+id/imgGrafico"
-        android:layout_alignLeft="@+id/imgGrafico"
-        android:layout_alignStart="@+id/imgGrafico" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txtVolumedeChuva"

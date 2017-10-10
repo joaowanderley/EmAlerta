@@ -45,6 +45,14 @@
         <activity
             android:name=".View.NivelActivity"
             android:label="@string/title_activity_nivel"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.ChuvaActivity"
+            android:label="@string/title_activity_chuva"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.GraficoActivity"
+            android:label="@string/title_activity_grafico"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

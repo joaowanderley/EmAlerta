@@ -11,4 +11,6 @@
     <string name="title_activity_emergencia">EmergenciaActivity</string>
     <string name="title_activity_detalhe_estacao">DetalheEstacaoActivity</string>
     <string name="title_activity_nivel">NivelActivity</string>
+    <string name="title_activity_chuva">ChuvaActivity</string>
+    <string name="title_activity_grafico">GraficoActivity</string>
 </resources>

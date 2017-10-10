@@ -59,18 +59,67 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("codestacao", codigoEstacao);
-                Intent intent = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                Intent telaNivelIMG = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
+                telaNivelIMG.putExtras(bundle);
+                startActivity(telaNivelIMG);
             }
         });
         TextNivelRio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent telaNivel = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
-                startActivity(telaNivel);
+                Intent telaNivelTXT = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
+                startActivity(telaNivelTXT);
             }
         });
+
+
+        ImageView ImgChuvaRio = (ImageView) findViewById(R.id.imgChuva);
+        TextView TextChuvaRio = (TextView) findViewById(R.id.txtVolumedeChuva);
+
+
+        ImgChuvaRio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("codestacao", codigoEstacao);
+                Intent telaChuvaIMG = new Intent(DetalheEstacaoActivity.this, ChuvaActivity.class);
+                telaChuvaIMG.putExtras(bundle);
+                startActivity(telaChuvaIMG);
+            }
+        });
+        TextChuvaRio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaChuvaTXT = new Intent(DetalheEstacaoActivity.this, ChuvaActivity.class);
+                startActivity(telaChuvaTXT);
+            }
+        });
+
+
+
+        ImageView ImgGrafico = (ImageView) findViewById(R.id.imgGrafico);
+        TextView TextGrafico = (TextView) findViewById(R.id.txtGrafico);
+
+        ImgGrafico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("codestacao", codigoEstacao);
+                Intent telaGraficoIMG = new Intent(DetalheEstacaoActivity.this, GraficoActivity.class);
+                telaGraficoIMG.putExtras(bundle);
+                startActivity(telaGraficoIMG);
+            }
+        });
+        TextGrafico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaGraficoTXT = new Intent(DetalheEstacaoActivity.this, GraficoActivity.class);
+                startActivity(telaGraficoTXT);
+            }
+        });
+
+
+
     }
 
     @Override
