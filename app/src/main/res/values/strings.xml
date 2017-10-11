@@ -13,4 +13,7 @@
     <string name="title_activity_nivel">NivelActivity</string>
     <string name="title_activity_chuva">ChuvaActivity</string>
     <string name="title_activity_grafico">GraficoActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_criarconta">CriarcontaActivity</string>
+    <string name="title_activity_criar_conta">CriarContaActivity</string>
 </resources>

@@ -53,6 +53,14 @@
         <activity
             android:name=".View.GraficoActivity"
             android:label="@string/title_activity_grafico"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.CriarContaActivity"
+            android:label="@string/title_activity_criar_conta"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

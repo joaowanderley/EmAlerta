@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity
        new ProgressTask(this).execute();
 
 
+
+
     }
 
 
@@ -233,8 +235,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_favoritas) {
-            Toast.makeText(getApplicationContext(), "Logo estará pronta. =)", Toast.LENGTH_LONG).show();
+            //Testando a tela de login
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
 
+            //Toast.makeText(getApplicationContext(), "Logo estará pronta. =)", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_estacoes) {
             //Chama a tela que lista as estações
             Intent i = new Intent(MainActivity.this, EstacaoActivity.class);
