@@ -65,13 +65,14 @@ public class NivelActivity extends AppCompatActivity {
                         }catch(Exception ex) {
                         }
                     }
-                    /*
-                    for (int i = 0; rsltDados.; i++){
-                        System.out.println(rsltDados[i].codEstacao);
-                        System.out.println(rsltDados[i].nivel);
-                        System.out.println(rsltDados[i].chuva);
+
+                    for (int i = 0;  i < rsltDados.length; i++){
+                        System.out.println("Estação: " + rsltDados[i].codEstacao);
+                        System.out.println("Nível: " + rsltDados[i].nivel);
+                        System.out.println("Chuva: " + rsltDados[i].chuva);
+                        System.out.println("Data e Hora: " + rsltDados[i].dataHora);
                     }
-                    */
+
                     ad.setTitle("Estação: " + codEstacao);
 
                     //Testando
