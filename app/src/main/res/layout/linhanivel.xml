@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imgSituacaoList"
+        android:id="@+id/imgSituacaoListNivel"
         android:layout_width="60dp"
         android:layout_height="30dp"
         app:srcCompat="@drawable/subindo"
@@ -21,19 +21,19 @@
         android:layout_marginLeft="16dp" />
 
     <TextView
-        android:id="@+id/txtNivelList"
+        android:id="@+id/txtNivelListNivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="168"
         android:layout_marginStart="34dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtDataList"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtDataListNivel"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toRightOf="@+id/imgSituacaoList"
+        app:layout_constraintLeft_toRightOf="@+id/imgSituacaoListNivel"
         android:layout_marginLeft="34dp" />
 
     <TextView
-        android:id="@+id/txtDataList"
+        android:id="@+id/txtDataListNivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="24/08/2017 01:15"
@@ -42,20 +42,20 @@
         android:layout_marginTop="40dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/txtNivelList"
+        app:layout_constraintLeft_toRightOf="@+id/txtNivelListNivel"
         android:layout_marginLeft="27dp" />
 
     <TextView
-        android:id="@+id/txtSituacaoList"
+        android:id="@+id/txtSituacaoListNivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Normal"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
+        android:layout_marginLeft="33dp"
         android:layout_marginStart="33dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDataList"
+        android:text="Normal"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDataListNivel"
+        app:layout_constraintLeft_toRightOf="@+id/txtDataListNivel"
+        app:layout_constraintTop_toTopOf="@+id/txtDataListNivel"
+        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintTop_toTopOf="@+id/txtDataList"
-        app:layout_constraintLeft_toRightOf="@+id/txtDataList"
-        android:layout_marginLeft="33dp" />
+        tools:layout_constraintTop_creator="1" />
 </android.support.constraint.ConstraintLayout>

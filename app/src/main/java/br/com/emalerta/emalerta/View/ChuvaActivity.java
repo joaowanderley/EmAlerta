@@ -57,7 +57,7 @@ public class ChuvaActivity extends AppCompatActivity {
                     cChuva.codEstacao = codEstacao;
                     cChuva.dataInicio = dataInicio;
                     cChuva.dataFim    = dataFim;
-
+                    //c.execute();
                     cChuva.join();
                     cChuva.start();
                     while(rslt == "START") {
@@ -67,13 +67,13 @@ public class ChuvaActivity extends AppCompatActivity {
                         }catch(Exception ex) {
                         }
                     }
-                    /*
-                    for (int i = 0; rsltDados.; i++){
-                        System.out.println(rsltDados[i].codEstacao);
-                        System.out.println(rsltDados[i].nivel);
-                        System.out.println(rsltDados[i].chuva);
+                    for (int i = 0;  i < rsltDados.length; i++){
+                        System.out.println("Posição: " + i);
+                        System.out.println("Estação: " + rsltDados[i].codEstacao);
+                        System.out.println("Chuva: " + rsltDados[i].chuva);
+                        System.out.println("Data e Hora: " + rsltDados[i].dataHora);
                     }
-                    */
+
                     ad.setTitle("Estação: " + codEstacao);
 
                     //Testando

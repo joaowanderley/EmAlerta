@@ -31,17 +31,17 @@
         style="@android:style/Widget.Material.EditText"
         android:layout_width="121dp"
         android:layout_height="47dp"
+        android:layout_alignBottom="@+id/editDeA"
+        android:layout_alignTop="@+id/editDeA"
         android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/editDeA"
+        android:layout_toRightOf="@+id/editDeA"
         android:ems="10"
         android:inputType="date"
         android:singleLine="false"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:layout_alignBottom="@+id/editDeA"
-        android:layout_toRightOf="@+id/editDeA"
-        android:layout_toEndOf="@+id/editDeA"
-        android:layout_alignTop="@+id/editDeA" />
+        tools:layout_editor_absoluteY="83dp" />
 
     <Button
         android:id="@+id/btnConsultar"
