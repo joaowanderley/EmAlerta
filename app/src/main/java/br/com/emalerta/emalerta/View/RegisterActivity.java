@@ -1,7 +1,7 @@
 package br.com.emalerta.emalerta.View;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -10,36 +10,44 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 
+
 import br.com.emalerta.emalerta.DAO.DatabaseHelper;
+import br.com.emalerta.emalerta.Model.User;
 import br.com.emalerta.emalerta.R;
 import br.com.emalerta.emalerta.helpers.InputValidation;
 
+/**
+ * Created by Wanderley on 17/10/2016.
+ */
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private final AppCompatActivity activity = LoginActivity.this;
+    private final AppCompatActivity activity = RegisterActivity.this;
 
     private NestedScrollView nestedScrollView;
 
+    private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
+    private TextInputLayout textInputLayoutConfirmPassword;
 
+    private TextInputEditText textInputEditTextName;
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
+    private TextInputEditText textInputEditTextConfirmPassword;
 
-    private AppCompatButton appCompatButtonLogin;
-
-    private AppCompatTextView textViewLinkRegister;
+    private AppCompatButton appCompatButtonRegister;
+    private AppCompatTextView appCompatTextViewLoginLink;
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_criar_conta);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -50,39 +58,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Implementação botão voltar
         getSupportActionBar().setDisplayHomeAsUpEnabled(false); // Mostrar o botão
         getSupportActionBar().setHomeButtonEnabled(false); // Ativando o botão
-        getSupportActionBar().setTitle("Acessar conta"); // Titulo para ser exibido
+        getSupportActionBar().setTitle("Cadastrar conta"); // Titulo para ser exibido
         // Fim implementação botão voltar
-
-
     }
-
-   /* public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando. como está, deve funcionar
-                startActivity(new Intent(this, MainActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
-                finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
-                break;
-            default:break;
-        }
-        return true;
-    }*/
 
     /**
      * This method is to initialize views
      */
     private void initViews() {
-
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
+        textInputLayoutName = (TextInputLayout) findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
+        textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
 
+        textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
         textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
+        textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
 
-        appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
+        appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
-        textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
+      //  appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
+
 
     }
 
@@ -90,18 +89,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * This method is to initialize listeners
      */
     private void initListeners() {
-        appCompatButtonLogin.setOnClickListener(this);
-        textViewLinkRegister.setOnClickListener(this);
+        appCompatButtonRegister.setOnClickListener(this);
+        appCompatTextViewLoginLink.setOnClickListener(this);
+
     }
 
     /**
      * This method is to initialize objects to be used
      */
     private void initObjects() {
-        databaseHelper = new DatabaseHelper(activity);
         inputValidation = new InputValidation(activity);
+        databaseHelper = new DatabaseHelper(activity);
+        user = new User();
 
     }
+
 
     /**
      * This implemented method is to listen the click on view
@@ -111,50 +113,62 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.appCompatButtonLogin:
-                verifyFromSQLite();
-                break;
-            case R.id.textViewLinkRegister:
-                // Navigate to RegisterActivity
-                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intentRegister);
+
+            case R.id.appCompatButtonRegister:
+                postDataToSQLite();
                 break;
         }
     }
 
     /**
-     * This method is to validate the input text fields and verify login credentials from SQLite
+     * This method is to validate the input text fields and post data to SQLite
      */
-    private void verifyFromSQLite() {
+    private void postDataToSQLite() {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
+            return;
+        }
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
         if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password))) {
             return;
         }
-        if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
-                , textInputEditTextPassword.getText().toString().trim())) {
-
-
-            Intent accountsIntent = new Intent(activity, MainActivity.class);
-            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
-            emptyInputEditText();
-            startActivity(accountsIntent);
-
-        }else {
-            // Snack Bar to show success message that record is wrong
-            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+        if (!inputValidation.isInputEditTextMatches(textInputEditTextPassword, textInputEditTextConfirmPassword,
+                textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
+            return;
         }
+
+        if (!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {
+
+            user.setName(textInputEditTextName.getText().toString().trim());
+            user.setEmail(textInputEditTextEmail.getText().toString().trim());
+            user.setPassword(textInputEditTextPassword.getText().toString().trim());
+
+            databaseHelper.addUser(user);
+
+            // Snack Bar to show success message that record saved successfully
+            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            emptyInputEditText();
+
+
+        } else {
+            // Snack Bar to show error message that record already exists
+            Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+        }
+
+
     }
 
     /**
      * This method is to empty all input edit text
      */
     private void emptyInputEditText() {
+        textInputEditTextName.setText(null);
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
+        textInputEditTextConfirmPassword.setText(null);
     }
 }

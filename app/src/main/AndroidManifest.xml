@@ -59,7 +59,7 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.CriarContaActivity"
+            android:name=".View.RegisterActivity"
             android:label="@string/title_activity_criar_conta"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
