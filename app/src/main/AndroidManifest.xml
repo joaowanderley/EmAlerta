@@ -58,7 +58,7 @@
             android:name=".View.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.CriarConta"></activity>
+        <activity android:name=".View.CriarConta" />
     </application>
 
 </manifest>

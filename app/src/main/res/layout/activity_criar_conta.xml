@@ -30,7 +30,7 @@
             android:id="@+id/textInputLayoutName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:textColorHint="#fafafa">
 
             <android.support.design.widget.TextInputEditText
@@ -49,7 +49,7 @@
             android:id="@+id/textInputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textColorHint="#fafafa">
 
             <android.support.design.widget.TextInputEditText
@@ -67,7 +67,7 @@
             android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#fafafa"
             android:textColorHint="#fafafa">
 
@@ -86,7 +86,7 @@
             android:id="@+id/textInputLayoutConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textColorHint="#fafafa">
 
             <android.support.design.widget.TextInputEditText
@@ -104,7 +104,7 @@
             android:id="@+id/appCompatButtonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:background="#114A8F"
             android:textColor="#fafafa"
             android:text="@string/text_register" />
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Already a member? Login"
+            android:text="Tem cadastro? Faça login."
             android:textColor="#fafafa"
             android:textSize="16sp" />
     </android.support.v7.widget.LinearLayoutCompat>
