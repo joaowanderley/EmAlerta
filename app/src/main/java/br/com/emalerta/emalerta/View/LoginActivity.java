@@ -39,39 +39,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.content_login);
 
         initViews();
         initListeners();
         initObjects();
-
-        // Implementação botão voltar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false); // Mostrar o botão
-        getSupportActionBar().setHomeButtonEnabled(false); // Ativando o botão
-        getSupportActionBar().setTitle("Acessar conta"); // Titulo para ser exibido
-        // Fim implementação botão voltar
-
-
     }
-
-   /* public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando. como está, deve funcionar
-                startActivity(new Intent(this, MainActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
-                finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
-                break;
-            default:break;
-        }
-        return true;
-    }*/
 
     /**
      * This method is to initialize views
      */
     private void initViews() {
 
+       // nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
@@ -116,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
-                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent intentRegister = new Intent(getApplicationContext(), CriarConta.class);
                 startActivity(intentRegister);
                 break;
         }
@@ -135,16 +115,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_email))) {
             return;
         }
+
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
-
-            Intent accountsIntent = new Intent(activity, MainActivity.class);
+                System.out.print("Funcionou botão de cadastro");
+            Intent telaLogin = new Intent(activity, MainActivity.class);
+            startActivity(telaLogin);
+            finish();
+           /* Intent accountsIntent = new Intent(activity, UsersListActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
-            startActivity(accountsIntent);
+            startActivity(accountsIntent);*/
 
-        }else {
+
+        } else {
             // Snack Bar to show success message that record is wrong
             Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
         }
@@ -156,5 +141,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void emptyInputEditText() {
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
+
     }
 }

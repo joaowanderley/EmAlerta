@@ -1,29 +1,23 @@
 package br.com.emalerta.emalerta.View;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-
 
 import br.com.emalerta.emalerta.DAO.DatabaseHelper;
 import br.com.emalerta.emalerta.Model.User;
 import br.com.emalerta.emalerta.R;
 import br.com.emalerta.emalerta.helpers.InputValidation;
 
-/**
- * Created by Wanderley on 17/10/2016.
- */
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class CriarConta extends AppCompatActivity implements View.OnClickListener {
 
-    private final AppCompatActivity activity = RegisterActivity.this;
+    private final AppCompatActivity activity = CriarConta.this;
 
     private NestedScrollView nestedScrollView;
 
@@ -48,18 +42,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().hide();
 
         initViews();
         initListeners();
         initObjects();
-
-        // Implementação botão voltar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false); // Mostrar o botão
-        getSupportActionBar().setHomeButtonEnabled(false); // Ativando o botão
-        getSupportActionBar().setTitle("Cadastrar conta"); // Titulo para ser exibido
-        // Fim implementação botão voltar
     }
 
     /**
@@ -80,11 +67,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
-      //  appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
-
+        appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
 
     }
-
     /**
      * This method is to initialize listeners
      */
@@ -93,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         appCompatTextViewLoginLink.setOnClickListener(this);
 
     }
-
     /**
      * This method is to initialize objects to be used
      */
@@ -103,8 +87,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         user = new User();
 
     }
-
-
     /**
      * This implemented method is to listen the click on view
      *
@@ -117,9 +99,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.appCompatButtonRegister:
                 postDataToSQLite();
                 break;
+
+            case R.id.appCompatTextViewLoginLink:
+                finish();
+                break;
         }
     }
-
     /**
      * This method is to validate the input text fields and post data to SQLite
      */
@@ -161,7 +146,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
-
     /**
      * This method is to empty all input edit text
      */
