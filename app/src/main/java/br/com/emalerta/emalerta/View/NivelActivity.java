@@ -45,12 +45,7 @@ public class NivelActivity extends AppCompatActivity {
 
         Button consultarNivel = (Button)findViewById(R.id.btnConsultar);
 
-        final AlertDialog ad = new AlertDialog.Builder(this).create();
-
-        //ListView lista = (ListView) findViewById(R.id.listViewNivel);
-        //ArrayList<DadoHistorico> listadeNivel = adicionarNiveis();
-        //ArrayAdapter adapter = new NivelAdapter(this, listadeNivel);
-
+        //final AlertDialog ad = new AlertDialog.Builder(this).create();
 
         consultarNivel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +79,11 @@ public class NivelActivity extends AppCompatActivity {
                         }
                     }
 
+                    ListView lista = (ListView) findViewById(R.id.listViewNivel);
+                    ArrayList<DadoHistorico> listadeNivel = adicionarNiveis();
+                    ArrayAdapter adapter = new NivelAdapter(getBaseContext(), listadeNivel);
+                    lista.setAdapter(adapter);
+
                     for (int i = 0;  i < rsltDados.length; i++){
                         System.out.println("Posição: " + i);
                         System.out.println("Estação: " + rsltDados[i].codEstacao);
@@ -93,17 +93,17 @@ public class NivelActivity extends AppCompatActivity {
                     //lista.setAdapter(adapter);
 
 
-                   ad.setTitle("Estação: " + codEstacao);
+                   //ad.setTitle("Estação: " + codEstacao);
 
                     //Testando
-                    ad.setMessage("Nível: " + rsltDados[0].nivel + " | Data e Hora: " + rsltDados[0].dataHora);
+                    //ad.setMessage("Nível: " + rsltDados[0].nivel + " | Data e Hora: " + rsltDados[0].dataHora);
 
                 }catch(Exception ex){
-                    ad.setTitle("Error!");
-                    ad.setMessage(ex.toString());
+                    //ad.setTitle("Error!");
+                    //ad.setMessage(ex.toString());
                 }
 
-                ad.show();
+                //ad.show();
 
             }
         });
@@ -115,7 +115,6 @@ public class NivelActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true); // Ativando o botão
         getSupportActionBar().setTitle("Nível da Estação"); // Titulo para ser exibido
         // Fim implementação botão voltar
-
 
 
     }
@@ -138,10 +137,10 @@ public class NivelActivity extends AppCompatActivity {
         for(int i = 0; i < rsltDados.length; i++){
             DadoHistorico nivelNovo = new DadoHistorico();
 
-            //nivelNovo.setImagem(R.drawable.subindo);
-            nivelNovo.setProperty(3,rsltDados[i].nivel);
-            nivelNovo.setProperty(1,rsltDados[i].dataHora);
-            //nivelNovo.setSituacao("Normal");
+            nivelNovo.setImagem(R.drawable.subindo);
+            nivelNovo.setNivel(rsltDados[i].nivel);
+            nivelNovo.setDataHora(rsltDados[i].dataHora);
+            nivelNovo.setSituacao("Normal");
 
             nivelLista.add(nivelNovo);
         }

@@ -38,6 +38,7 @@ public class EmergenciaActivity extends AppCompatActivity {
         // Fim implementação botão voltar
 
         EmergenciaDAO listarEmergencia = new EmergenciaDAO();
+
         ListView lista = (ListView) findViewById(R.id.lvEmergencia);
         ArrayList<Orgao> emergencias = listarEmergencia.adicionarOrgaos();
         ArrayAdapter adapter = new EmergenciaAdapter(this, emergencias);
@@ -47,7 +48,7 @@ public class EmergenciaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando. como está, deve funcionar
+            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando. como está, deve funcionarc
                 startActivity(new Intent(this, MainActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
                 finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
                 break;

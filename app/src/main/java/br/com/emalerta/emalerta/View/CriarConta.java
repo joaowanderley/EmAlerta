@@ -114,7 +114,7 @@ public class CriarConta extends AppCompatActivity implements View.OnClickListene
         }
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
-        }   
+        }
         if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
@@ -138,13 +138,10 @@ public class CriarConta extends AppCompatActivity implements View.OnClickListene
             Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
             emptyInputEditText();
 
-
         } else {
             // Snack Bar to show error message that record already exists
             Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
-
-
     }
     /**
      * This method is to empty all input edit text

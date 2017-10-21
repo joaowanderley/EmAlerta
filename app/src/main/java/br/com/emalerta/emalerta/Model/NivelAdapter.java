@@ -38,10 +38,10 @@ public class NivelAdapter extends ArrayAdapter<DadoHistorico>{
         TextView dataehora = (TextView) rowView.findViewById(R.id.txtDataListNivel);
         TextView situacao = (TextView) rowView.findViewById(R.id.txtSituacaoListNivel);
 
-        //imagem.setImageResource(elementos.get(position).getImagem());
-        //nivel.setText(elementos.get(position).getProperty(1));
-        //dataehora.setText(elementos.get(position).getDataHora());
-        //situacao.setText(elementos.get(position).getSituacao());
+        imagem.setImageResource(elementos.get(position).getImagem());
+        nivel.setText(elementos.get(position).getNivel());
+        dataehora.setText(elementos.get(position).getDataHora());
+        situacao.setText(elementos.get(position).getSituacao());
 
         return rowView;
     }

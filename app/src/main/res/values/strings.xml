@@ -33,5 +33,6 @@
     <string name="error_email_exists">Email não confere</string>
     <string name="error_password_match">Senha não confere</string>
     <string name="error_valid_email_password">Email ou senha incorretos</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>
