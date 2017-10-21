@@ -22,4 +22,10 @@
 
     <include layout="@layout/content_nivel" />
 
+    <DatePicker
+        android:id="@+id/dpResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+
 </android.support.design.widget.CoordinatorLayout>

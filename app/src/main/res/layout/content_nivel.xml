@@ -24,7 +24,8 @@
         android:inputType="date"
         android:singleLine="false"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp" />
+        tools:layout_editor_absoluteY="83dp"
+        android:focusable="false"/>
 
     <EditText
         android:id="@+id/editAteA"
@@ -41,7 +42,8 @@
         android:inputType="date"
         android:singleLine="false"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp" />
+        tools:layout_editor_absoluteY="83dp"
+        android:focusable="false"/>
 
     <Button
         android:id="@+id/btnConsultar"

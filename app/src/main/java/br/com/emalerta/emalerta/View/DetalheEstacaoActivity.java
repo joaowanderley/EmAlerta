@@ -62,6 +62,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
                 Intent telaNivelIMG = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
                 telaNivelIMG.putExtras(bundle);
                 startActivity(telaNivelIMG);
+                finish();
             }
         });
         TextNivelRio.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +70,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent telaNivelTXT = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
                 startActivity(telaNivelTXT);
+                finish();
             }
         });
 
@@ -85,6 +87,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
                 Intent telaChuvaIMG = new Intent(DetalheEstacaoActivity.this, ChuvaActivity.class);
                 telaChuvaIMG.putExtras(bundle);
                 startActivity(telaChuvaIMG);
+                finish();
             }
         });
         TextChuvaRio.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +95,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent telaChuvaTXT = new Intent(DetalheEstacaoActivity.this, ChuvaActivity.class);
                 startActivity(telaChuvaTXT);
+                finish();
             }
         });
 
@@ -108,6 +112,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
                 Intent telaGraficoIMG = new Intent(DetalheEstacaoActivity.this, GraficoActivity.class);
                 telaGraficoIMG.putExtras(bundle);
                 startActivity(telaGraficoIMG);
+                finish();
             }
         });
         TextGrafico.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +120,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent telaGraficoTXT = new Intent(DetalheEstacaoActivity.this, GraficoActivity.class);
                 startActivity(telaGraficoTXT);
+                finish();
             }
         });
 
