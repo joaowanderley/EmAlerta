@@ -16,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,13 +43,16 @@ import br.com.emalerta.emalerta.R;
 // extends BaseDemoAcitivity
 
 public class MainActivity extends AppCompatActivity
-        implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+        implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
 
     private GoogleMap mMap;
     private GeoJsonLayer alLayer;
     private GeoJsonLayer escolaAL;
     private SupportMapFragment mapFragment;
+
+    private ImageView imgCadastrarEntrar;
+    private TextView txtCadastrarEntrar;
 
 
     @Override
@@ -72,8 +78,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
        new ProgressTask(this).execute();
-
-
 
 
     }
@@ -185,6 +189,15 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View v) {
+
+                Intent imgLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(imgLogin);
+                finish();
+
+    }
+
     public class ProgressTask extends AsyncTask<Void, Void, Boolean> {
         private ProgressDialog dialog;
         private Context context;
@@ -235,9 +248,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_favoritas) {
-            //Testando a tela de login
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(i);
+            Toast.makeText(getApplicationContext(), "Em desenvolvimento", Toast.LENGTH_LONG).show();
 
             //Toast.makeText(getApplicationContext(), "Logo estará pronta. =)", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_estacoes) {
@@ -252,7 +263,7 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, EmergenciaActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_cartilha) {
-            Toast.makeText(getApplicationContext(), "Vai ficar legal isso aqui. Espero. ;)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Em desenvolvimento", Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_Sobre) {
             Toast.makeText(getApplicationContext(), "Em desenvolvimento! ;)", Toast.LENGTH_LONG).show();

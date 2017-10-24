@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#2c3faa</color>
     <color name="colorPrimaryDark">#062166</color>
     <color name="colorAccent">#FF4081</color>
     <color name="cinza">#95989a</color>
     <color name="myAzul">#00BFFF</color>
     <color name="branco">#FFFFFF</color>
+    <color name="BRANCO_EM_ALERTA">#fafafa</color>
+    <color name="COLOR_PRIMARY">#114a8f</color>
 </resources>

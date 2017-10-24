@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -27,8 +28,8 @@ import br.com.emalerta.emalerta.R;
 
 public class NivelActivity extends AppCompatActivity {
 
-    public static  String rslt = null;
-    public static  DadoHistorico[] rsltDados = null;
+    public static String rslt = null;
+    public static DadoHistorico[] rsltDados = null;
     private DatePicker dpResult;
     private EditText edtData;
     private EditText edtData2;
@@ -49,42 +50,41 @@ public class NivelActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
         //cria uma nova intenção para buscar os dados enviados pela activityanterior
         final Intent valores = getIntent();
 
         //pega os valores enviados da activityanterior e preenche os campos
         final String codigoEstacao = valores.getStringExtra("codestacao");
 
-        Button consultarNivel = (Button)findViewById(R.id.btnConsultar);
+        Button consultarNivel = (Button) findViewById(R.id.btnConsultar);
 
         consultarNivel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 CallSoapDados2 cs = new CallSoapDados2();
-                try{
+                try {
 
-                    EditText data1Nivel = (EditText)findViewById(R.id.editDeA);
-                    EditText data2Nivel = (EditText)findViewById(R.id.editAteA);
+                    EditText data1Nivel = (EditText) findViewById(R.id.editDeA);
+                    EditText data2Nivel = (EditText) findViewById(R.id.editAteA);
 
                     String codEstacao = codigoEstacao;
                     String dataInicio = data1Nivel.getText().toString();
-                    String dataFim    = data2Nivel.getText().toString();
+                    String dataFim = data2Nivel.getText().toString();
 
                     rslt = "START";
                     CallerDados cNivel = new CallerDados();
                     cNivel.codEstacao = codEstacao;
                     cNivel.dataInicio = dataInicio;
-                    cNivel.dataFim    = dataFim;
+                    cNivel.dataFim = dataFim;
 
                     cNivel.join();
                     cNivel.start();
-                    while(rslt == "START") {
+                    while (rslt == "START") {
                         try {
                             Thread.sleep(10);
 
-                        }catch(Exception ex) {
+                        } catch (Exception ex) {
                         }
                     }
 
@@ -94,7 +94,7 @@ public class NivelActivity extends AppCompatActivity {
                     lista.setAdapter(adapter);
 
 
-                }catch(Exception ex){
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
@@ -130,7 +130,7 @@ Inicio implementação do Calendario no EditText
     // display current date
     public void setCurrentDateOnView() {
 
-        edtData = (EditText) findViewById(R.id.editDeA) ;
+        edtData = (EditText) findViewById(R.id.editDeA);
 
 
         dpResult = (DatePicker) findViewById(R.id.dpResult);
@@ -144,9 +144,10 @@ Inicio implementação do Calendario no EditText
         dpResult.init(year, month, day, null);
 
     }
+
     public void setCurrentDateOnView2() {
 
-        edtData2 = (EditText) findViewById(R.id.editAteA) ;
+        edtData2 = (EditText) findViewById(R.id.editAteA);
 
 
         dpResult = (DatePicker) findViewById(R.id.dpResult);
@@ -176,6 +177,7 @@ Inicio implementação do Calendario no EditText
         });
 
     }
+
     public void addListenerOnEditTex2() {
 
         edtData2 = (EditText) findViewById(R.id.editAteA);
@@ -192,19 +194,21 @@ Inicio implementação do Calendario no EditText
         });
 
     }
+
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case DATE_DIALOG_ID:
                 // set date picker as current date
                 return new DatePickerDialog(this, datePickerListener,
-                        year, month,day);
+                        year, month, day);
             case DATE_DIALOG_ID2:
                 return new DatePickerDialog(this, datePickerListener2,
                         year, month, day);
         }
         return null;
     }
+
     private DatePickerDialog.OnDateSetListener datePickerListener
             = new DatePickerDialog.OnDateSetListener() {
 
@@ -219,7 +223,7 @@ Inicio implementação do Calendario no EditText
 
             // set selected date into EditText
             edtData.setText(new StringBuilder().append(day)
-                    .append("/").append(month +1).append("/").append(year)
+                    .append("/").append(month + 1).append("/").append(year)
                     .append(" "));
 
             // set selected date into datepicker also
@@ -242,7 +246,7 @@ Inicio implementação do Calendario no EditText
 
             // set selected date into EditText
             edtData2.setText(new StringBuilder().append(day)
-                    .append("/").append(month +1).append("/").append(year)
+                    .append("/").append(month + 1).append("/").append(year)
                     .append(" "));
 
             // set selected date into datepicker also
@@ -251,6 +255,7 @@ Inicio implementação do Calendario no EditText
 
         }
     };
+
     /*
     Final da implementação do calendario no EDitText.
 
@@ -262,26 +267,27 @@ Inicio implementação do Calendario no EditText
                 startActivity(new Intent(this, EstacaoActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
                 finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
                 break;
-            default:break;
+            default:
+                break;
         }
         return true;
     }
 
-    public ArrayList<DadoHistorico> adicionarNiveis(){
+    public ArrayList<DadoHistorico> adicionarNiveis() {
         ArrayList<DadoHistorico> nivelLista = new ArrayList<DadoHistorico>();
         float nivelAnterior = 0;
         float nivelAtual;
 
-        for(int i = 0; i < rsltDados.length; i++){
+        for (int i = 0; i < rsltDados.length; i++) {
             DadoHistorico nivelNovo = new DadoHistorico();
 
             nivelAtual = Float.parseFloat(rsltDados[i].nivel);
 
-            if(nivelAtual > nivelAnterior){
+            if (nivelAtual > nivelAnterior) {
                 nivelNovo.setImagem(R.drawable.subindo);
                 nivelAnterior = nivelAtual;
                 nivelAtual = 0;
-            }else{
+            } else {
                 nivelNovo.setImagem(R.drawable.descendo);
             }
             nivelNovo.setNivel(rsltDados[i].nivel);
@@ -293,6 +299,7 @@ Inicio implementação do Calendario no EditText
 
         return nivelLista;
     }
+
 }
 
 
