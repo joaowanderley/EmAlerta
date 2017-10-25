@@ -21,11 +21,13 @@
         android:layout_toEndOf="@+id/txtPeriodo"
         android:layout_toRightOf="@+id/txtPeriodo"
         android:ems="10"
+        android:focusable="false"
         android:inputType="date"
         android:singleLine="false"
+        android:text="DD/MM/AAAA"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:focusable="false"/>
+        tools:layout_editor_absoluteY="83dp" />
 
     <EditText
         android:id="@+id/editAteA"
@@ -39,11 +41,13 @@
         android:layout_toEndOf="@+id/editDeA"
         android:layout_toRightOf="@+id/editDeA"
         android:ems="10"
+        android:focusable="false"
         android:inputType="date"
         android:singleLine="false"
+        android:text="DD/MM/AAAA"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp"
-        android:focusable="false"/>
+        tools:layout_editor_absoluteY="83dp" />
 
     <Button
         android:id="@+id/btnConsultar"

@@ -22,24 +22,30 @@
         android:layout_toRightOf="@+id/txtPeriodoGrafico"
         android:ems="10"
         android:inputType="date"
+        android:text="DD/MM/AAAA"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="83dp" />
+        tools:layout_editor_absoluteY="83dp"
+        android:focusable="false"/>
 
     <EditText
         android:id="@+id/editAteAGrafico"
         style="@android:style/Widget.Material.EditText"
         android:layout_width="121dp"
         android:layout_height="47dp"
+        android:layout_alignBottom="@+id/editDeAGrafico"
+        android:layout_alignTop="@+id/editDeAGrafico"
         android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/editDeAGrafico"
+        android:layout_toRightOf="@+id/editDeAGrafico"
         android:ems="10"
         android:inputType="date"
+        android:text="DD/MM/AAAA"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="236dp"
         tools:layout_editor_absoluteY="83dp"
-        android:layout_alignBottom="@+id/editDeAGrafico"
-        android:layout_toRightOf="@+id/editDeAGrafico"
-        android:layout_toEndOf="@+id/editDeAGrafico"
-        android:layout_alignTop="@+id/editDeAGrafico" />
+        android:focusable="false"/>
 
     <Button
         android:id="@+id/btnConsultarGrafico"

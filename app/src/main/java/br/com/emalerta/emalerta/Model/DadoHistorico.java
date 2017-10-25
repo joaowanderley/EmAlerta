@@ -30,8 +30,6 @@ public class DadoHistorico implements KvmSerializable {
         this.vazao = vazao;
         this.nivel = nivel;
         this.chuva = chuva;
-        //this.situacao = situacao;
-        //this.imagem = imagem;
     }
 
     public Object getProperty(int arg0) {
@@ -109,7 +107,6 @@ public class DadoHistorico implements KvmSerializable {
                 break;
         }
     }
-
 
     public String getCodEstacao() {
         return codEstacao;

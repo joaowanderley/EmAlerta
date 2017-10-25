@@ -22,4 +22,10 @@
 
     <include layout="@layout/content_grafico" />
 
+    <DatePicker
+        android:id="@+id/dpGrafico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+
 </android.support.design.widget.CoordinatorLayout>
