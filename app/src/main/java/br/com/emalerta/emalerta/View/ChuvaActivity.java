@@ -262,25 +262,23 @@ Inicio implementação do Calendario no EditText
 
     public ArrayList<DadoHistorico> adicionarChuva() {
         ArrayList<DadoHistorico> chuvaLista = new ArrayList<DadoHistorico>();
-        //float nivelAnterior = 0;
-        //float nivelAtual;
+        float chuvaAtual = 0;
 
         for (int i = 0; i < rsltDados.length; i++) {
             DadoHistorico chuvaNova = new DadoHistorico();
-            /*
-            nivelAtual = Float.parseFloat(rsltDados[i].nivel);
 
-            if (nivelAtual > nivelAnterior) {
-                nivelNovo.setImagem(R.drawable.subindo);
-                nivelAnterior = nivelAtual;
-                nivelAtual = 0;
+            chuvaAtual = Float.parseFloat(rsltDados[i].chuva);
+
+            if (chuvaAtual > 0.0) {
+                chuvaNova.setImagem(R.drawable.com_chuva);
+                chuvaNova.setSituacao("Com chuva");
+                //nivelAtual = 0;
             } else {
-                nivelNovo.setImagem(R.drawable.descendo);
-            }*/
-            chuvaNova.setImagem(R.drawable.com_chuva);
+                chuvaNova.setImagem(R.drawable.sem_chuva);
+                chuvaNova.setSituacao("Sem chuva");
+            }
             chuvaNova.setChuva(rsltDados[i].chuva);
             chuvaNova.setDataHora(rsltDados[i].dataHora);
-            chuvaNova.setSituacao("Com chuva");
 
             chuvaLista.add(chuvaNova);
         }
