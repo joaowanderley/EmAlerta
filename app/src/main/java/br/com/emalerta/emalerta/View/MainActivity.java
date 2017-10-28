@@ -3,6 +3,7 @@ package br.com.emalerta.emalerta.View;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -14,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +47,7 @@ import br.com.emalerta.emalerta.R;
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    public static final String PREFS_NAME = "LoginPrefs";
 
     private GoogleMap mMap;
     private GeoJsonLayer alLayer;
@@ -181,8 +184,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Toast.makeText(getApplicationContext(), "Eita, esqueci de implementar. =(", Toast.LENGTH_LONG).show();
+        if (id == R.id.logout) {
+
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.remove("logged");
+            editor.commit();
+           Intent voltarLogin = new Intent(this, LoginActivity.class);
+            startActivity(voltarLogin);
+            finish();
             return true;
         }
 
@@ -248,20 +258,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_favoritas) {
-            Toast.makeText(getApplicationContext(), "Em desenvolvimento", Toast.LENGTH_LONG).show();
-
-            //Toast.makeText(getApplicationContext(), "Logo estará pronta. =)", Toast.LENGTH_LONG).show();
+           Intent telaFavoritas = new Intent(this, FavoritasActivity.class);
+            startActivity(telaFavoritas);
+            finish();
         } else if (id == R.id.nav_estacoes) {
             //Chama a tela que lista as estações
             Intent i = new Intent(MainActivity.this, EstacaoActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_mapa) {
             Intent i = new Intent(MainActivity.this, MainActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_emergencia) {
             //Chama a tela que lista os orgãos de emergência
             Intent i = new Intent(MainActivity.this, EmergenciaActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_cartilha) {
             Toast.makeText(getApplicationContext(), "Em desenvolvimento", Toast.LENGTH_LONG).show();
 
