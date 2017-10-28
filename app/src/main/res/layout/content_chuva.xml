@@ -15,23 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txtChuvaC"
         android:layout_alignBottom="@+id/txtChuvaC"
-        android:layout_alignEnd="@+id/btnConsultarC"
-        android:layout_alignRight="@+id/btnConsultarC"
+        android:layout_alignLeft="@+id/editAteaChuva"
+        android:layout_alignStart="@+id/editAteaChuva"
         android:text="Data e Hora"
-        android:textColor="#062166"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txtSituacaoC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txtDataeHoraC"
-        android:layout_alignBottom="@+id/txtDataeHoraC"
-        android:layout_alignEnd="@+id/editAteaChuva"
-        android:layout_alignRight="@+id/editAteaChuva"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
-        android:text="Situação"
         android:textColor="#062166"
         android:textStyle="bold" />
 
@@ -39,12 +25,10 @@
         android:id="@+id/txtChuvaC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignLeft="@+id/editDeaChuva"
+        android:layout_alignStart="@+id/editDeaChuva"
         android:layout_below="@+id/btnConsultarC"
-        android:layout_marginLeft="55dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="29dp"
         android:text="Chuva (mm)"
         android:textColor="#062166"
         android:textStyle="bold" />
