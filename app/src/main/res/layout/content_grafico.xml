@@ -60,6 +60,13 @@
         android:layout_below="@+id/editDeAGrafico"
         android:layout_centerHorizontal="true" />
 
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/graph"
+        android:layout_below="@+id/btnConsultarGrafico">
+    </com.jjoe64.graphview.GraphView>
+
     <TextView
         android:id="@+id/txtPeriodoGrafico"
         android:layout_width="wrap_content"
@@ -76,4 +83,5 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="28dp"
         tools:layout_editor_absoluteY="95dp" />
+
 </RelativeLayout>

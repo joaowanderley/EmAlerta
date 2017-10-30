@@ -5,7 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
+
+import br.com.emalerta.emalerta.DAO.EstacaoDAO;
+import br.com.emalerta.emalerta.DAO.EstacaoFavorita;
+import br.com.emalerta.emalerta.Model.Estacao;
+import br.com.emalerta.emalerta.Model.EstacaoAdapter;
 import br.com.emalerta.emalerta.R;
 
 public class FavoritasActivity extends AppCompatActivity {
@@ -24,6 +34,15 @@ public class FavoritasActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Estações Favoritas"); // Titulo para ser exibido
         // Fim implementação botão voltar
 
+      /*  // inicio implementação lista de favoritos
+        EstacaoFavorita listarEstacoesFavoritas = new EstacaoFavorita();
+
+        final ListView lista = (ListView) findViewById(R.id.lvEstacaoFavoritas);
+        ArrayList<Estacao> estacoes = listarEstacoesFavoritas.adicionarEstacaoFavorita();
+        ArrayAdapter adapter = new EstacaoAdapter(this, estacoes);
+        lista.setAdapter(adapter);
+
+        // fim implementação lista de favoritos*/
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
