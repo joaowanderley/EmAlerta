@@ -95,21 +95,21 @@
         android:id="@+id/imgGrafico"
         android:layout_width="60dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/grafico"
         android:layout_above="@+id/txtVolumedeChuva"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
-        android:layout_marginEnd="29dp" />
+        android:layout_toEndOf="@+id/textView20"
+        android:layout_toRightOf="@+id/textView20"
+        app:srcCompat="@drawable/grafico" />
 
     <TextView
         android:id="@+id/txtGrafico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/imgGrafico"
-        android:layout_alignLeft="@+id/imgGrafico"
         android:layout_alignRight="@+id/imgGrafico"
-        android:layout_alignStart="@+id/imgGrafico"
         android:layout_below="@+id/imgGrafico"
         android:text="Gráfico"
         android:textColor="#062166"

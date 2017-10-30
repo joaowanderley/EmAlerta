@@ -36,12 +36,12 @@ public class ChuvaAdapter extends ArrayAdapter<DadoHistorico>{
         ImageView imagem = (ImageView) rowView.findViewById(R.id.imgSituacaoListaChuva);
         TextView chuva = (TextView) rowView.findViewById(R.id.txtChuvaListaChuva);
         TextView dataehora = (TextView) rowView.findViewById(R.id.txtDatahoraListaChuva);
-        TextView situacao = (TextView) rowView.findViewById(R.id.txtSituacaoListaChuva);
+        //TextView situacao = (TextView) rowView.findViewById(R.id.txtSituacaoListaChuva);
 
         imagem.setImageResource(elementos.get(position).getImagem());
         chuva.setText(elementos.get(position).getChuva());
         dataehora.setText(elementos.get(position).getDataHora());
-        situacao.setText(elementos.get(position).getSituacao());
+        //situacao.setText(elementos.get(position).getSituacao());
 
         return rowView;
     }
