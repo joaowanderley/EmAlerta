@@ -276,31 +276,29 @@ Inicio implementação do Calendario no EditText
     public ArrayList<DadoHistorico> adicionarNiveis() {
         ArrayList<DadoHistorico> nivelLista = new ArrayList<DadoHistorico>();
 
-        for (int i = 0; i < rsltDados.length; i++) {
+        int i = 0;
+        while (i < rsltDados.length){
             DadoHistorico nivelNovo = new DadoHistorico();
-            /*
-            if (rsltDados[i] == rsltDados.length{
-                if (Float.parseFloat(rsltDados[i].nivel) >= Float.parseFloat(rsltDados[i + 1].nivel)) {
+            if ((i + 1) < rsltDados.length - 1){
+                if (Float.parseFloat(rsltDados[i].nivel) >= Float.parseFloat(rsltDados[i+1].nivel)){
                     nivelNovo.setImagem(R.drawable.subindo);
-                } else {
+                }else{
                     nivelNovo.setImagem(R.drawable.descendo);
                 }
-            }if (rsltDados[i+1] == null){
-                break;
-            }*/
-            nivelNovo.setImagem(R.drawable.subindo);
+            }
             nivelNovo.setNivel(rsltDados[i].nivel);
             nivelNovo.setDataHora(rsltDados[i].dataHora);
             nivelNovo.setSituacao("Normal");
 
             nivelLista.add(nivelNovo);
+
+            ++i;
+
         }
 
         return nivelLista;
     }
-
 }
-
 
 /*
 

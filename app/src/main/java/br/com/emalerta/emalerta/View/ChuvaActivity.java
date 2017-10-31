@@ -271,10 +271,8 @@ Inicio implementação do Calendario no EditText
 
             if (chuvaAtual > 0.0) {
                 chuvaNova.setImagem(R.drawable.com_chuva);
-                //chuvaNova.setSituacao("Com chuva");
             } else {
                 chuvaNova.setImagem(R.drawable.sem_chuva);
-                //chuvaNova.setSituacao("Sem chuva");
             }
             chuvaNova.setChuva(rsltDados[i].chuva);
             chuvaNova.setDataHora(rsltDados[i].dataHora);
