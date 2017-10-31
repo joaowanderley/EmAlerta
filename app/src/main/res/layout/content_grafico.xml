@@ -61,11 +61,12 @@
         android:layout_centerHorizontal="true" />
 
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/graph"
-        android:layout_below="@+id/btnConsultarGrafico">
-    </com.jjoe64.graphview.GraphView>
+        android:layout_alignLeft="@+id/txtPeriodoGrafico"
+        android:layout_alignStart="@+id/txtPeriodoGrafico"
+        android:layout_below="@+id/btnConsultarGrafico"></com.jjoe64.graphview.GraphView>
 
     <TextView
         android:id="@+id/txtPeriodoGrafico"

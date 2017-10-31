@@ -279,11 +279,14 @@ Inicio implementação do Calendario no EditText
         for (int i = 0; i < rsltDados.length; i++) {
             DadoHistorico nivelNovo = new DadoHistorico();
             /*
-            if (Float.parseFloat(rsltDados[i].nivel) >= Float.parseFloat(rsltDados[i+1].nivel)) {
-                nivelNovo.setImagem(R.drawable.subindo);
-
-            } else {
-                nivelNovo.setImagem(R.drawable.descendo);
+            if (rsltDados[i] == rsltDados.length{
+                if (Float.parseFloat(rsltDados[i].nivel) >= Float.parseFloat(rsltDados[i + 1].nivel)) {
+                    nivelNovo.setImagem(R.drawable.subindo);
+                } else {
+                    nivelNovo.setImagem(R.drawable.descendo);
+                }
+            }if (rsltDados[i+1] == null){
+                break;
             }*/
             nivelNovo.setImagem(R.drawable.subindo);
             nivelNovo.setNivel(rsltDados[i].nivel);

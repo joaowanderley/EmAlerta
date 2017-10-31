@@ -100,8 +100,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
-        android:layout_toEndOf="@+id/textView20"
-        android:layout_toRightOf="@+id/textView20"
+        android:layout_toEndOf="@+id/textView22"
+        android:layout_toRightOf="@+id/textView22"
         app:srcCompat="@drawable/grafico" />
 
     <TextView
@@ -153,17 +153,26 @@
         android:layout_marginTop="96dp"
         android:layout="@layout/content_estacao" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/txtSituacaodoRio"
+        app:srcCompat="@color/COLOR_PRIMARY" />
+
     <TextView
         android:id="@+id/txtSituacaodoRio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Situação do Nível do Rio"
+        android:layout_below="@+id/txtVolumedeChuva"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:text="Legenda"
         android:textColor="#062166"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/txtVolumedeChuva"
-        android:layout_centerHorizontal="true" />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgNivelAbaixo"
@@ -184,7 +193,7 @@
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/imgNivelAbaixo"
         android:layout_toRightOf="@+id/imgNivelAbaixo"
-        android:text="Abaixo do normal (menos que 127cm)" />
+        android:text="Abaixo do normal (menos que 127 cm)" />
 
     <ImageView
         android:id="@+id/imageView17"
