@@ -63,6 +63,10 @@ public class EstacaoActivity extends AppCompatActivity {
                 bundle.putString("municipio", estacaoSelecionada.getMunicipio());
                 bundle.putString("rio", estacaoSelecionada.getNomeRio());
                 bundle.putString("img", String.valueOf(estacaoSelecionada.getImagem()));
+                bundle.putString("abaixoCota", String.valueOf(estacaoSelecionada.getSituacao().getAbaixo_cota()));
+                bundle.putString("normal", String.valueOf(estacaoSelecionada.getSituacao().getNormal()));
+                bundle.putString("alerta", String.valueOf(estacaoSelecionada.getSituacao().getAlerta()));
+                bundle.putString("emergencia", String.valueOf(estacaoSelecionada.getSituacao().getEmergencia()));
 
                 Intent intent = new Intent(EstacaoActivity.this, DetalheEstacaoActivity.class);
                 intent.putExtras(bundle);

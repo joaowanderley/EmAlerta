@@ -62,14 +62,14 @@
         android:id="@+id/txtSituacaoAtual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtVolumedeChuva"
+        android:layout_alignRight="@+id/txtVolumedeChuva"
+        android:layout_below="@+id/txtRioDetalhe"
+        android:layout_marginTop="34dp"
         android:text="Situação Atual"
         android:textColor="#062166"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/imgEstacaoDetalhe"
-        android:layout_alignRight="@+id/txtVolumedeChuva"
-        android:layout_alignEnd="@+id/txtVolumedeChuva" />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgNivel"
@@ -100,8 +100,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
-        android:layout_toEndOf="@+id/textView22"
-        android:layout_toRightOf="@+id/textView22"
+        android:layout_toEndOf="@+id/txtDetalheEstaEmergencia"
+        android:layout_toRightOf="@+id/txtDetalheEstaEmergencia"
         app:srcCompat="@drawable/grafico" />
 
     <TextView
@@ -157,6 +157,7 @@
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/txtSituacaodoRio"
@@ -166,9 +167,8 @@
         android:id="@+id/txtSituacaodoRio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtVolumedeChuva"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
+        android:layout_centerVertical="true"
         android:text="Legenda"
         android:textColor="#062166"
         android:textSize="18sp"
@@ -178,14 +178,14 @@
         android:id="@+id/imgNivelAbaixo"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/nivel_laranja"
-        android:layout_below="@+id/txtSituacaodoRio"
         android:layout_alignLeft="@+id/txtNiveldoRio"
         android:layout_alignStart="@+id/txtNiveldoRio"
-        android:layout_marginTop="11dp" />
+        android:layout_below="@+id/txtSituacaodoRio"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/nivel_laranja" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/txtDetalheEstaAbaixonormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imgNivelAbaixo"
@@ -193,7 +193,7 @@
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/imgNivelAbaixo"
         android:layout_toRightOf="@+id/imgNivelAbaixo"
-        android:text="Abaixo do normal (menos que 127 cm)" />
+        android:text="Abaixo do normal (menos que  cm)" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -202,54 +202,92 @@
         android:layout_alignLeft="@+id/imgNivelAbaixo"
         android:layout_alignStart="@+id/imgNivelAbaixo"
         android:layout_below="@+id/imgNivelAbaixo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         app:srcCompat="@drawable/nivel_verde" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/txtDetalheEstanormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nível normal (de 127 cm à 303 cm)"
         android:layout_alignBottom="@+id/imageView17"
-        android:layout_alignLeft="@+id/textView16"
-        android:layout_alignStart="@+id/textView16" />
+        android:layout_alignLeft="@+id/txtDetalheEstaAbaixonormal"
+        android:layout_alignStart="@+id/txtDetalheEstaAbaixonormal"
+        android:text="Nível normal (de cm à  cm)" />
 
     <ImageView
         android:id="@+id/imageView18"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/nivel_amarelo"
-        android:layout_below="@+id/imageView17"
         android:layout_alignLeft="@+id/imageView17"
         android:layout_alignStart="@+id/imageView17"
-        android:layout_marginTop="12dp" />
+        android:layout_below="@+id/imageView17"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/nivel_amarelo" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/txtDetalheEstaAlerta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView18"
-        android:layout_alignLeft="@+id/textView20"
-        android:layout_alignStart="@+id/textView20"
-        android:text="Alerta (de 303 cm  à 501 cm)" />
+        android:layout_alignLeft="@+id/txtDetalheEstanormal"
+        android:layout_alignStart="@+id/txtDetalheEstanormal"
+        android:text="Alerta (de  cm  à  cm)" />
 
     <ImageView
         android:id="@+id/imageView19"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/nivel_vermelho"
-        android:layout_below="@+id/imageView18"
         android:layout_alignLeft="@+id/imageView18"
         android:layout_alignStart="@+id/imageView18"
-        android:layout_marginTop="13dp" />
+        android:layout_below="@+id/imageView18"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/nivel_vermelho" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/txtDetalheEstaEmergencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView19"
-        android:layout_alignLeft="@+id/textView21"
-        android:layout_alignStart="@+id/textView21"
-        android:text="Emergência (acima de 501 cm)" />
+        android:layout_alignLeft="@+id/txtDetalheEstaAlerta"
+        android:layout_alignStart="@+id/txtDetalheEstaAlerta"
+        android:text="Emergência (acima de cm)" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/imageView19"
+        android:layout_alignStart="@+id/imageView19"
+        android:layout_below="@+id/imageView19"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/subindo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/txtDetalheEstaEmergencia"
+        android:layout_alignStart="@+id/txtDetalheEstaEmergencia"
+        android:text="Nível do Rio Subindo" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/descendo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView5"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:text="Nível do Rio Descendo" />
 
 </RelativeLayout>

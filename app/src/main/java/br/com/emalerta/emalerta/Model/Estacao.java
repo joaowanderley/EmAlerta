@@ -15,6 +15,7 @@ public class Estacao {
     private String NomeRio;
     private String Status;
     private int imagem;
+    private SituacaoNivel situacao;
 
     public Estacao(String NomeEstacao, String CodEstacao, String Municipio, String Latitude, String Longitude, String Altitude,
                    String CodRio, String NomeRio, String Status, int imagem){
@@ -112,5 +113,13 @@ public class Estacao {
 
     public void setImagem(int imagem) {
         this.imagem = imagem;
+    }
+
+    public SituacaoNivel getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoNivel situacao) {
+        this.situacao = situacao;
     }
 }

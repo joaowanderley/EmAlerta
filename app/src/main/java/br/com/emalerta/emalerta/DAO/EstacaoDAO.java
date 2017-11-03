@@ -3,6 +3,7 @@ package br.com.emalerta.emalerta.DAO;
 import java.util.ArrayList;
 
 import br.com.emalerta.emalerta.Model.Estacao;
+import br.com.emalerta.emalerta.Model.SituacaoNivel;
 import br.com.emalerta.emalerta.R;
 
 /**
@@ -28,11 +29,42 @@ public class EstacaoDAO {
             estacaoNovo.setStatus(estacao[i][8]);
             estacaoNovo.setImagem(imagem_estacao[i]);
 
+            SituacaoNivel situacaoNova = new SituacaoNivel();
+
+            situacaoNova.setAbaixo_cota(situacao[i][0]);
+            situacaoNova.setNormal(situacao[i][1]);
+            situacaoNova.setAlerta(situacao[i][2]);
+            situacaoNova.setEmergencia(situacao[i][3]);
+
+            estacaoNovo.setSituacao(situacaoNova);
+
             estacaoLista.add(estacaoNovo);
         }
 
         return estacaoLista;
     }
+
+    private int [][] situacao  = new int[][]{
+            {143, 168, 277, 520},
+            {0, 0, 500, 520},
+            {108, 0, 400, 460},
+            {109, 132, 194, 520},
+            {156, 170, 216, 520},
+            {127, 161, 304, 520},
+            {434, 460, 500, 520},
+            {41, 47, 80, 520},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0},
+            {122, 158, 251, 500},
+            {0, 0, 0, 0},
+            {144, 182, 260, 520},
+            {96, 139, 210, 520},
+            {115, 143, 238, 520},
+            {155, 162, 204, 520},
+            {0, 0, 0, 0},
+            {114, 135, 177, 520},
+            {60, 85, 136, 520},
+    };
 
     private String [][] estacao = new String[][]{
             {"Jacuípe","39580000","Jacuípe-AL","-8,8411","-35,4469","61,2","39742000","Rio Jacuípe","Ativo"},
