@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -35,6 +37,8 @@ public class GraficoActivity extends AppCompatActivity {
     private DatePicker dpResult;
     private EditText edtData;
     private EditText edtData2;
+
+    GraphView graph;
 
     private int day;
     private int month;
@@ -88,16 +92,51 @@ public class GraficoActivity extends AppCompatActivity {
                         }catch(Exception ex) {
                         }
                     }
-                    GraphView graph = (GraphView) findViewById(R.id.graph);
 
-                    BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
-                            new DataPoint(Double.parseDouble(rsltDados[0].dataHora), Double.parseDouble(rsltDados[0].nivel)),
-                            new DataPoint(2017, Double.parseDouble(rsltDados[1].nivel)),
-                            new DataPoint(2017, Double.parseDouble(rsltDados[2].nivel)),
-                            new DataPoint(2017, Double.parseDouble(rsltDados[3].nivel)),
+                    graph = (GraphView) findViewById(R.id.graph);
+                    graph.removeAllSeries();
+
+                    LineGraphSeries<DataPoint> evolucaoNivel = new LineGraphSeries<>(new DataPoint[] {
+                            new DataPoint(0, Double.parseDouble(rsltDados[0].nivel)),
+                            new DataPoint(1, Double.parseDouble(rsltDados[1].nivel)),
+                            new DataPoint(2, Double.parseDouble(rsltDados[2].nivel)),
+                            new DataPoint(3, Double.parseDouble(rsltDados[3].nivel)),
+                            new DataPoint(4, Double.parseDouble(rsltDados[4].nivel)),
                     });
 
-                    graph.addSeries(series);
+                    LineGraphSeries<DataPoint> evolucaoChuva = new LineGraphSeries<>(new DataPoint[] {
+                            new DataPoint(0, Double.parseDouble(rsltDados[0].chuva)),
+                            new DataPoint(1, Double.parseDouble(rsltDados[1].chuva)),
+                            new DataPoint(2, Double.parseDouble(rsltDados[2].chuva)),
+                            new DataPoint(3, Double.parseDouble(rsltDados[3].chuva)),
+                            new DataPoint(4, Double.parseDouble(rsltDados[4].chuva)),
+                    });
+
+                    graph.addSeries(evolucaoNivel);
+                    //graph.addSeries(evolucaoChuva);
+                    evolucaoNivel.setColor(Color.parseColor("#96D986"));
+                    //evolucaoChuva.setColor(Color.parseColor("#0288D1"));
+
+                    evolucaoNivel.setTitle("Nível");
+                    evolucaoChuva.setTitle("Chuva");
+                    graph.getLegendRenderer().setVisible(true);
+                    graph.getLegendRenderer().setFixedPosition(1,1);
+                    graph.getLegendRenderer().setTextColor(Color.WHITE);
+
+                    StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+                    //staticLabelsFormatter.setHorizontalLabels(new String[] {"05", "2007", "2009","2011","2013","2015","2017","2019","21"});
+                    staticLabelsFormatter.setHorizontalLabels(new String[] {
+                            rsltDados[0].dataHora, rsltDados[1].dataHora, rsltDados[2].dataHora, rsltDados[3].dataHora, rsltDados[4].dataHora});
+
+                    graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+                    evolucaoNivel.setDrawDataPoints(true);
+                    //evolucaoChuva.setDrawDataPoints(true);
+
+                    evolucaoNivel.setDataPointsRadius(10);
+                    evolucaoNivel.setThickness(5);
+
+                    //evolucaoChuva.setDataPointsRadius(10);
+                    //evolucaoChuva.setThickness(5);
 
                 }catch(Exception ex){
                     ex.printStackTrace();
