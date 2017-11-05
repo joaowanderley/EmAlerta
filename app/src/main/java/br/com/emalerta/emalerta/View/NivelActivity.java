@@ -55,6 +55,9 @@ public class NivelActivity extends AppCompatActivity {
 
         //pega os valores enviados da activityanterior e preenche os campos
         final String codigoEstacao = valores.getStringExtra("codestacao");
+        final float abaixoCota = Float.parseFloat(valores.getStringExtra("abaixoCota"));
+        final float alerta =  Float.parseFloat(valores.getStringExtra("alerta"));
+        final float emergencia = Float.parseFloat(valores.getStringExtra("emergencia"));
 
         Button consultarNivel = (Button) findViewById(R.id.btnConsultar);
 
@@ -89,7 +92,7 @@ public class NivelActivity extends AppCompatActivity {
                     }
 
                     ListView lista = (ListView) findViewById(R.id.listViewNivel);
-                    ArrayList<DadoHistorico> listadeNivel = adicionarNiveis();
+                    ArrayList<DadoHistorico> listadeNivel = adicionarNiveis(abaixoCota, alerta, emergencia);
                     ArrayAdapter adapter = new NivelAdapter(getBaseContext(), listadeNivel);
                     lista.setAdapter(adapter);
 
@@ -273,8 +276,9 @@ Inicio implementação do Calendario no EditText
         return true;
     }
 
-    public ArrayList<DadoHistorico> adicionarNiveis() {
+    public ArrayList<DadoHistorico> adicionarNiveis(float nvabaixocota, float nvalerta, float nvemergencia) {
         ArrayList<DadoHistorico> nivelLista = new ArrayList<DadoHistorico>();
+
 
         int i = 0;
         while (i < rsltDados.length -2){
@@ -286,7 +290,18 @@ Inicio implementação do Calendario no EditText
             }
             nivelNovo.setNivel(rsltDados[i].nivel);
             nivelNovo.setDataHora(rsltDados[i].dataHora);
-            nivelNovo.setSituacao("Normal");
+
+            if (Float.parseFloat(rsltDados[i].nivel) <= nvabaixocota){
+                nivelNovo.setSituacao("Abaixo");
+            }else if (Float.parseFloat(rsltDados[i].nivel) >= nvabaixocota && Float.parseFloat(rsltDados[i].nivel) <= nvalerta){
+                nivelNovo.setSituacao("Normal");
+            }else if (Float.parseFloat(rsltDados[i].nivel) >= nvalerta && Float.parseFloat(rsltDados[i].nivel) <= nvemergencia){
+                nivelNovo.setSituacao("Alerta");
+            }else if (Float.parseFloat(rsltDados[i].nivel) >= nvemergencia) {
+                nivelNovo.setSituacao("Emergência");
+            }else{
+                nivelNovo.setSituacao("Sem");
+            }
 
             nivelLista.add(nivelNovo);
 

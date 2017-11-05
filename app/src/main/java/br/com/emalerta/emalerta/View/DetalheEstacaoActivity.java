@@ -65,6 +65,9 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("codestacao", codigoEstacao);
+                bundle.putString("abaixoCota", String.valueOf(valores.getStringExtra("abaixoCota")));
+                bundle.putString("alerta", String.valueOf(valores.getStringExtra("alerta")));
+                bundle.putString("emergencia", String.valueOf(valores.getStringExtra("emergencia")));
                 Intent telaNivelIMG = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
                 telaNivelIMG.putExtras(bundle);
                 startActivity(telaNivelIMG);
@@ -76,6 +79,9 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("codestacao", codigoEstacao);
+                bundle.putString("abaixoCota", String.valueOf(valores.getStringExtra("abaixoCota")));
+                bundle.putString("alerta", String.valueOf(valores.getStringExtra("alerta")));
+                bundle.putString("emergencia", String.valueOf(valores.getStringExtra("emergencia")));
                 Intent telaNivelTXT = new Intent(DetalheEstacaoActivity.this, NivelActivity.class);
                 telaNivelTXT.putExtras(bundle);
                 startActivity(telaNivelTXT);
@@ -92,6 +98,9 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("codestacao", codigoEstacao);
+                bundle.putString("abaixoCota", String.valueOf(valores.getStringExtra("abaixoCota")));
+                bundle.putString("alerta", String.valueOf(valores.getStringExtra("alerta")));
+                bundle.putString("emergencia", String.valueOf(valores.getStringExtra("emergencia")));
                 Intent telaChuvaIMG = new Intent(DetalheEstacaoActivity.this, ChuvaActivity.class);
                 telaChuvaIMG.putExtras(bundle);
                 startActivity(telaChuvaIMG);
@@ -104,6 +113,9 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("codestacao", codigoEstacao);
+                bundle.putString("abaixoCota", String.valueOf(valores.getStringExtra("abaixoCota")));
+                bundle.putString("alerta", String.valueOf(valores.getStringExtra("alerta")));
+                bundle.putString("emergencia", String.valueOf(valores.getStringExtra("emergencia")));
                 Intent telaChuvaTXT = new Intent(DetalheEstacaoActivity.this, ChuvaActivity.class);
                 telaChuvaTXT.putExtras(bundle);
                 startActivity(telaChuvaTXT);
