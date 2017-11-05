@@ -61,6 +61,7 @@ public class GraficoActivity extends AppCompatActivity {
         final String codigoEstacao = valores.getStringExtra("codestacao");
 
         Button consultarGrafico = (Button)findViewById(R.id.btnConsultarGrafico);
+        //EditText calendarioAtea = (EditText) findViewById(R.id.editAteAGrafico);
 
         final AlertDialog ad = new AlertDialog.Builder(this).create();
 
@@ -101,7 +102,7 @@ public class GraficoActivity extends AppCompatActivity {
                             new DataPoint(1, Double.parseDouble(rsltDados[1].nivel)),
                             new DataPoint(2, Double.parseDouble(rsltDados[2].nivel)),
                             new DataPoint(3, Double.parseDouble(rsltDados[3].nivel)),
-                            new DataPoint(4, Double.parseDouble(rsltDados[4].nivel)),
+                            new DataPoint(3, Double.parseDouble(rsltDados[4].nivel)),
                     });
 
                     LineGraphSeries<DataPoint> evolucaoChuva = new LineGraphSeries<>(new DataPoint[] {
@@ -109,13 +110,12 @@ public class GraficoActivity extends AppCompatActivity {
                             new DataPoint(1, Double.parseDouble(rsltDados[1].chuva)),
                             new DataPoint(2, Double.parseDouble(rsltDados[2].chuva)),
                             new DataPoint(3, Double.parseDouble(rsltDados[3].chuva)),
-                            new DataPoint(4, Double.parseDouble(rsltDados[4].chuva)),
                     });
 
                     graph.addSeries(evolucaoNivel);
                     //graph.addSeries(evolucaoChuva);
-                    evolucaoNivel.setColor(Color.parseColor("#96D986"));
-                    //evolucaoChuva.setColor(Color.parseColor("#0288D1"));
+                    evolucaoNivel.setColor(Color.parseColor("#0288D1"));
+                    //evolucaoChuva.setColor(Color.parseColor("#96D986"));
 
                     evolucaoNivel.setTitle("Nível");
                     evolucaoChuva.setTitle("Chuva");
@@ -124,9 +124,10 @@ public class GraficoActivity extends AppCompatActivity {
                     graph.getLegendRenderer().setTextColor(Color.WHITE);
 
                     StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                    //staticLabelsFormatter.setHorizontalLabels(new String[] {"05", "2007", "2009","2011","2013","2015","2017","2019","21"});
+
                     staticLabelsFormatter.setHorizontalLabels(new String[] {
-                            rsltDados[0].dataHora, rsltDados[1].dataHora, rsltDados[2].dataHora, rsltDados[3].dataHora, rsltDados[4].dataHora});
+                            rsltDados[0].dataHora.substring(11,16), rsltDados[1].dataHora.substring(11,16),
+                            rsltDados[2].dataHora.substring(11,16), rsltDados[3].dataHora.substring(11,16), rsltDados[4].dataHora.substring(11,16)});
 
                     graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
                     evolucaoNivel.setDrawDataPoints(true);
@@ -182,7 +183,7 @@ public class GraficoActivity extends AppCompatActivity {
 
     public void setCurrentDateOnView2() {
 
-        edtData2 = (EditText) findViewById(R.id.editAteaChuva);
+        edtData2 = (EditText) findViewById(R.id.editAteAGrafico);
 
 
         dpResult = (DatePicker) findViewById(R.id.dpGrafico);
