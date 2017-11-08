@@ -1,5 +1,9 @@
 package br.com.emalerta.emalerta.DAO;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 import br.com.emalerta.emalerta.Model.Estacao;
@@ -10,7 +14,8 @@ import br.com.emalerta.emalerta.R;
  * Created by caiqu on 10/09/2017.
  */
 
-public class EstacaoDAO {
+public class EstacaoDAO extends AppCompatActivity {
+
 
     public ArrayList<Estacao> adicionarEstacoes(){
         ArrayList<Estacao> estacaoLista = new ArrayList<Estacao>();
@@ -109,5 +114,7 @@ public class EstacaoDAO {
             R.drawable.correntes,
             R.drawable.brejao,
     };
+
+
 
 }

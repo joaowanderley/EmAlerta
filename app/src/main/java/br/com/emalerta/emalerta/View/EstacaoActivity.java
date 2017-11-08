@@ -21,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import br.com.emalerta.emalerta.DAO.EstacaoDAO;
+import br.com.emalerta.emalerta.DAO.EstacaoFavorita;
 import br.com.emalerta.emalerta.Model.Estacao;
 import br.com.emalerta.emalerta.Model.EstacaoAdapter;
 import br.com.emalerta.emalerta.R;
@@ -71,6 +72,8 @@ public class EstacaoActivity extends AppCompatActivity {
                 Intent intent = new Intent(EstacaoActivity.this, DetalheEstacaoActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                Intent enviarParaFavoritos = new Intent(EstacaoActivity.this, EstacaoFavorita.class);
+                enviarParaFavoritos.putExtras(bundle);
             }
         });
 

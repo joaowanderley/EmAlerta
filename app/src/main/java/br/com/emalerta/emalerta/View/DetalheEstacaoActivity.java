@@ -1,6 +1,10 @@
 package br.com.emalerta.emalerta.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,12 +12,55 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.com.emalerta.emalerta.DAO.EstacaoDAO;
+import br.com.emalerta.emalerta.DAO.EstacaoFavorita;
+import br.com.emalerta.emalerta.Model.Estacao;
 import br.com.emalerta.emalerta.R;
 
 public class DetalheEstacaoActivity extends AppCompatActivity {
+
+    SQLiteDatabase db;
+
+
+    public void favoritarEstacao() {
+
+        //cria uma nova intenção para buscar os dados enviados pela activityanterior
+        final Intent valores = getIntent();
+
+        //pega os valores enviados da activityanterior e preenche os campos
+
+        final String codigoEstacao = valores.getStringExtra("codestacao");
+
+        StringBuilder sql = new StringBuilder();
+
+        String codEstacao, nomeEstacao, municipio, latitude, altitude, codRio, nomeRio, status;
+        codEstacao = codigoEstacao.toString();
+        nomeEstacao = valores.getStringExtra("nomeestacao").toString();
+        municipio = valores.getStringExtra("municipio").toString();
+
+        sql.append("INSERT INTO tb_estacao(cod_estacao, nome, municipio) VALUES (");
+        sql.append("'"+ codEstacao +"'");
+        sql.append(",");
+        sql.append("'"+nomeEstacao+"'");
+        sql.append(",");
+        sql.append("'"+municipio+"'");
+        sql.append(")");
+
+        try {
+            db.execSQL(sql.toString());
+            Toast.makeText(getBaseContext(), "Estação adicionada aos favoritos!", Toast.LENGTH_LONG).show();
+        } catch (SQLException ex){
+            Toast.makeText(getBaseContext(), sql.toString()+"Erro = "+ ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +69,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        db = openOrCreateDatabase("estacao_banco.db", Context.MODE_PRIVATE, null);
         // Implementação botão voltar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar o botão
         getSupportActionBar().setHomeButtonEnabled(true); // Ativando o botão
@@ -174,7 +222,8 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         }
         if (id == R.id.favorite){
             // inicio implementação lista de favoritos
-            Toast.makeText(getApplicationContext(), "Estação adicionada aos favoritos", Toast.LENGTH_LONG).show();
+          favoritarEstacao();
+            //Toast.makeText(getApplicationContext(), "Estação adicionada aos favoritos", Toast.LENGTH_LONG).show();
 
             return  true;
 

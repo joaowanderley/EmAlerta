@@ -1,6 +1,10 @@
 package br.com.emalerta.emalerta.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,7 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +27,27 @@ import br.com.emalerta.emalerta.Model.EstacaoAdapter;
 import br.com.emalerta.emalerta.R;
 
 public class FavoritasActivity extends AppCompatActivity {
+
+    SQLiteDatabase db;
+    public void listarEstacao(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT * FROM tb_estacao");
+
+        Cursor dadosestacao = db.rawQuery(sql.toString(),null);
+        //Array com os IDs dos campos do layout dos dados
+        int[] to = {R.id.tvId, R.id.tvNome, R.id.tvMunicipio, R.id.txtRio};
+        String[] from = {"_id", "cod_estacao", "nome", "municipio"};
+        try{
+            SimpleCursorAdapter ad = new SimpleCursorAdapter(getBaseContext(), R.layout.dadosestacao, dadosestacao, from, to, 0);
+
+            ListView listar;
+            listar = (ListView) findViewById(R.id.lvEstacao);
+
+            listar.setAdapter(ad);
+        }catch (Exception ex){
+            Toast.makeText(getBaseContext(), sql.toString() + "Erro = " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +63,12 @@ public class FavoritasActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Estações Favoritas"); // Titulo para ser exibido
         // Fim implementação botão voltar
 
-      /*  // inicio implementação lista de favoritos
-        EstacaoFavorita listarEstacoesFavoritas = new EstacaoFavorita();
+        db = openOrCreateDatabase("estacao_banco.db", Context.MODE_PRIVATE, null);
 
-        final ListView lista = (ListView) findViewById(R.id.lvEstacaoFavoritas);
-        ArrayList<Estacao> estacoes = listarEstacoesFavoritas.adicionarEstacaoFavorita();
-        ArrayAdapter adapter = new EstacaoAdapter(this, estacoes);
-        lista.setAdapter(adapter);
+        listarEstacao();
+       // favoritarEstacao();
 
-        // fim implementação lista de favoritos*/
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

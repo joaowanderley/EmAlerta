@@ -28,6 +28,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.maps.android.clustering.ClusterManager;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     public static final String PREFS_NAME = "LoginPrefs";
 
     private GoogleMap mMap;
+    private GoogleMap mMarkRioLargo;
     private GeoJsonLayer alLayer;
     private GeoJsonLayer escolaAL;
     private SupportMapFragment mapFragment;
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        mMarkRioLargo = googleMap;
 
         LatLng alagoas = new LatLng(-9.731095, -36.560825);
 
@@ -98,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         LatLng santanaMundau = new LatLng(-9.1678, -36.2175);
         LatLng saoJose = new LatLng(-9.0042, -36.051);
         LatLng uniao = new LatLng(-9.1831, -36.0436);
-        LatLng rioLargo = new LatLng(-9.4672, -35.8597);
+        final LatLng rioLargo = new LatLng(-9.4672, -35.8597);
         LatLng quebrangulo = new LatLng(-9.3656, -36.4194);
         LatLng pauloJacinto = new LatLng(-9.3686, -36.3747);
         LatLng vicosa = new LatLng(-9.3792,-36.2492);
@@ -119,13 +122,23 @@ public class MainActivity extends AppCompatActivity
 
 
 
+        mMarkRioLargo.addMarker(new MarkerOptions().position(rioLargo).title("Rio Largo").snippet("Estação de Rio Largo/AL"));
+       // mMarkRioLargo.setOnMarkerClickListener(new H);
+        mMarkRioLargo.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(getApplicationContext(), "Abrir estação Rio largo", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
         // marcadores cidades
         mMap.addMarker(new MarkerOptions().position(jacuipe).title("Jacuípe").snippet("Estação de Jacuípe"));
         mMap.addMarker(new MarkerOptions().position(portoCalvo).title("Porto Calvo").snippet("Estação de Porto Calvo"));
         mMap.addMarker(new MarkerOptions().position(santanaMundau).title("Santana do Mundaú").snippet("Estação de Santana do Mundaú-AL"));
         mMap.addMarker(new MarkerOptions().position(saoJose).title("São José da Laje").snippet("Estação de São José da Lage-AL"));
         mMap.addMarker(new MarkerOptions().position(uniao).title("Usina Laginha").snippet("Estação de União dos Palmares-AL"));
-        mMap.addMarker(new MarkerOptions().position(rioLargo).title("Fazenda Boa Fortuna").snippet("Estação de Rio Largo-AL"));
+       // mMap.addMarker(new MarkerOptions().position(rioLargo).title("Fazenda Boa Fortuna").snippet("Estação de Rio Largo-AL"));
         mMap.addMarker(new MarkerOptions().position(quebrangulo).title("Vila São Francisco").snippet("Estação de Quebrangulo-AL"));
         mMap.addMarker(new MarkerOptions().position(pauloJacinto).title("Paulo Jacinto").snippet("Estação de Paulo Jacinto-AL"));
         mMap.addMarker(new MarkerOptions().position(vicosa).title("Viçosa").snippet("Estação de Viçosa-AL"));
@@ -139,6 +152,7 @@ public class MainActivity extends AppCompatActivity
         mMap.addMarker(new MarkerOptions().position(palmeirina).title("Palmeirina").snippet("Estação de Palmeirina-PE"));
         mMap.addMarker(new MarkerOptions().position(correntes).title("Correntes II").snippet("Estação de Correntes-PE"));
         mMap.addMarker(new MarkerOptions().position(brejao).title("Brejão").snippet("Estação de Brejão-PE"));
+
     }
     public void alterarStyleMap(GeoJsonLayer alLayer){
 
@@ -147,6 +161,8 @@ public class MainActivity extends AppCompatActivity
         estiloLinha.setStrokeWidth(2);
 
         estiloLinha.setFillColor(getResources().getColor(R.color.myAzul));
+
+
 /*
 
         GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
