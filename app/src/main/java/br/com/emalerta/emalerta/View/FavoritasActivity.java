@@ -35,13 +35,13 @@ public class FavoritasActivity extends AppCompatActivity {
 
         Cursor dadosestacao = db.rawQuery(sql.toString(),null);
         //Array com os IDs dos campos do layout dos dados
-        int[] to = {R.id.tvId, R.id.tvNome, R.id.tvMunicipio, R.id.txtRio};
-        String[] from = {"_id", "cod_estacao", "nome", "municipio"};
+        int[] to = {R.id.tvNome, R.id.tvMunicipio, R.id.tvRio, R.id.imgEstacaoFavorita};
+        String[] from = {"nome", "municipio", "rio", "img"};
         try{
             SimpleCursorAdapter ad = new SimpleCursorAdapter(getBaseContext(), R.layout.dadosestacao, dadosestacao, from, to, 0);
 
             ListView listar;
-            listar = (ListView) findViewById(R.id.lvEstacao);
+            listar = (ListView) findViewById(R.id.lvEstacaoFavoritas);
 
             listar.setAdapter(ad);
         }catch (Exception ex){

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +18,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 import br.com.emalerta.emalerta.DAO.EstacaoDAO;
 import br.com.emalerta.emalerta.DAO.EstacaoFavorita;
@@ -30,6 +34,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
     public void favoritarEstacao() {
 
         //cria uma nova intenção para buscar os dados enviados pela activityanterior
+        ImageView imgEstacao = (ImageView) findViewById(R.id.imgEstacaoDetalhe);
         final Intent valores = getIntent();
 
         //pega os valores enviados da activityanterior e preenche os campos
@@ -42,13 +47,25 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         codEstacao = codigoEstacao.toString();
         nomeEstacao = valores.getStringExtra("nomeestacao").toString();
         municipio = valores.getStringExtra("municipio").toString();
+        nomeRio = valores.getStringExtra("rio").toString();
+        imgEstacao.setImageResource(Integer.parseInt(valores.getStringExtra("img")));
 
-        sql.append("INSERT INTO tb_estacao(cod_estacao, nome, municipio) VALUES (");
+       /* Bitmap bitmap = ((BitmapDrawable)foto.getDrawable()).getBitmap();
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, saida);
+        byte[] img = saida.toByteArray();*/
+
+
+        sql.append("INSERT INTO tb_estacao(cod_estacao, nome, municipio, rio, img) VALUES (");
         sql.append("'"+ codEstacao +"'");
         sql.append(",");
         sql.append("'"+nomeEstacao+"'");
         sql.append(",");
         sql.append("'"+municipio+"'");
+        sql.append(",");
+        sql.append("'"+nomeRio+"'");
+        sql.append(",");
+        sql.append("'"+imgEstacao+"'");
         sql.append(")");
 
         try {
@@ -56,6 +73,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(), "Estação adicionada aos favoritos!", Toast.LENGTH_LONG).show();
         } catch (SQLException ex){
             Toast.makeText(getBaseContext(), sql.toString()+"Erro = "+ ex.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(),"ESSA ESTAÇÃO JÁ É UMA FAVORITA", Toast.LENGTH_LONG).show();
         }
 
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="br.com.emalerta.emalerta.View.FavoritasActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -23,25 +24,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:text="nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:id="@+id/txtnome"
-        />
-    <TextView
-        android:text="cod_estacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:text="municipio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <ListView
         android:id="@+id/lvEstacaoFavoritas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 
-</RelativeLayout>
+</LinearLayout>
