@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity implements Runnable {
         sql2.append("cod_estacao varchar(100) UNIQUE,");
         sql2.append("nome varchar(100),");
         sql2.append("rio varchar(100),");
-        sql2.append("img blob,");
+        sql2.append("img integer,");
         sql2.append("municipio varchar(50))");
 
         try{
