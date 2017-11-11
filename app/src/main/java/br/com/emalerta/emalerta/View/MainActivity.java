@@ -6,16 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,18 +26,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.plus.model.people.Person;
-import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.geojson.GeoJsonFeature;
 import com.google.maps.android.geojson.GeoJsonLayer;
-import com.google.maps.android.geojson.GeoJsonPointStyle;
 import com.google.maps.android.geojson.GeoJsonPolygonStyle;
 
-import java.util.ArrayList;
-
-import br.com.emalerta.emalerta.DAO.EstacaoDAO;
-import br.com.emalerta.emalerta.Model.Estacao;
 import br.com.emalerta.emalerta.R;
+import br.com.emalerta.emalerta.SobreActivity;
 
 // extends BaseDemoAcitivity
 
@@ -291,11 +281,15 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, EmergenciaActivity.class);
             startActivity(i);
             finish();
-        } else if (id == R.id.nav_cartilha) {
-            Toast.makeText(getApplicationContext(), "Em desenvolvimento", Toast.LENGTH_LONG).show();
+        } //else if (id == R.id.nav_cartilha) {
+            //Toast.makeText(getApplicationContext(), "Em desenvolvimento", Toast.LENGTH_LONG).show();
 
-        } else if (id == R.id.nav_Sobre) {
-            Toast.makeText(getApplicationContext(), "Em desenvolvimento! ;)", Toast.LENGTH_LONG).show();
+        //}
+        else if (id == R.id.nav_Sobre) {
+            //Chama a tela sobre o app
+            Intent i = new Intent(MainActivity.this, SobreActivity.class);
+            startActivity(i);
+            finish();
 
         } else if (id == R.id.nav_Compartilhe) {
             Intent compartilhar = new Intent(android.content.Intent.ACTION_SEND);
