@@ -44,11 +44,14 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         StringBuilder sql = new StringBuilder();
 
         String codEstacao, nomeEstacao, municipio, latitude, altitude, codRio, nomeRio, status;
+        String imgRelEstacao;
         codEstacao = codigoEstacao.toString();
         nomeEstacao = valores.getStringExtra("nomeestacao").toString();
         municipio = valores.getStringExtra("municipio").toString();
         nomeRio = valores.getStringExtra("rio").toString();
         imgEstacao.setImageResource(Integer.parseInt(valores.getStringExtra("img")));
+        imgRelEstacao = valores.getStringExtra("img").toString();
+
 
        /* Bitmap bitmap = ((BitmapDrawable)foto.getDrawable()).getBitmap();
         ByteArrayOutputStream saida = new ByteArrayOutputStream();
@@ -65,7 +68,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         sql.append(",");
         sql.append("'"+nomeRio+"'");
         sql.append(",");
-        sql.append("'"+imgEstacao+"'");
+        sql.append("'"+imgRelEstacao+"'");
         sql.append(")");
 
         try {
