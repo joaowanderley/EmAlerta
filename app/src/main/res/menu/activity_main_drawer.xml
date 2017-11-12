@@ -20,10 +20,10 @@
             android:icon="@drawable/ic_error_black_24dp"
             android:title="Emergência" />
             />
-        <item
+        <!-- <item
             android:id="@+id/nav_cartilha"
             android:icon="@drawable/ic_question_answer_black_24dp"
-            android:title="Cartilha" />
+            android:title="Cartilha" /> -->
         <item
             android:id="@+id/nav_Sobre"
             android:icon="@drawable/ic_assistant_photo_black_24dp"

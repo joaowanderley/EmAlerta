@@ -59,7 +59,11 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.CriarConta" />
-        <activity android:name=".View.FavoritasActivity"></activity>
+        <activity android:name=".View.FavoritasActivity" />
+        <activity
+            android:name=".SobreActivity"
+            android:label="@string/title_activity_sobre"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
