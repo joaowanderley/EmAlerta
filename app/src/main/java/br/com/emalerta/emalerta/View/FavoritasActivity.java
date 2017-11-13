@@ -73,7 +73,7 @@ public class FavoritasActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                View v = lista.getChildAt(i);
+                /*View v = lista.getChildAt(i);
 
                 String codEstacao, nome, municipio, rio,imgEstacao;
 
@@ -90,15 +90,17 @@ public class FavoritasActivity extends AppCompatActivity {
 
 
                 Bundle bundle = new Bundle();
-
-                Intent intent = new Intent(FavoritasActivity.this, DetalheEstacaoActivity.class);
+*/
+                Intent intent = new Intent(FavoritasActivity.this, EstacaoActivity.class);
+                /*
                 bundle.putString("codestacao", codEstacao);
                 bundle.putString("nomeestacao", nome);
                 bundle.putString("municipio", municipio);
                 bundle.putString("rio", rio);
                 bundle.putString("img", String.valueOf(imgEstacao));
-                intent.putExtras(bundle);
+                intent.putExtras(bundle);*/
                 startActivity(intent);
+                finish();
             }
         });
 

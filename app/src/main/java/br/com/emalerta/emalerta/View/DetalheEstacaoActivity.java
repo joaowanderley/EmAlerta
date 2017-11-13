@@ -75,10 +75,39 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
             db.execSQL(sql.toString());
             Toast.makeText(getBaseContext(), "Estação adicionada aos favoritos!", Toast.LENGTH_LONG).show();
         } catch (SQLException ex){
-            Toast.makeText(getBaseContext(), sql.toString()+"Erro = "+ ex.getMessage(), Toast.LENGTH_LONG).show();
-            Toast.makeText(getBaseContext(),"ESSA ESTAÇÃO JÁ É UMA FAVORITA", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), sql.toString()+"Erro = "+ ex.getMessage(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(),"ESSA ESTAÇÃO JÁ É UMA FAVORITA", Toast.LENGTH_LONG).show();
+            excluirEstacaoFavorita();
         }
 
+
+    }
+    public void excluirEstacaoFavorita(){
+
+        final Intent valores = getIntent();
+
+        //pega os valores enviados da activityanterior e preenche os campos
+
+        final String codigoEstacao = valores.getStringExtra("codestacao");
+        String codEstacao;
+
+        codEstacao = codigoEstacao.toString();
+
+        //cria uma stringSQL para excluir a estação selecionada
+        StringBuilder sql = new StringBuilder();
+        sql.append("DELETE FROM tb_estacao WHERE cod_estacao = "+ codEstacao);
+
+        try {
+            db.execSQL(sql.toString());
+            Toast.makeText(getBaseContext(), "Estação Removida da lista de favoritas!", Toast.LENGTH_LONG).show();
+
+           /* //volta para a janela anterior
+            Intent Main = new Intent(ClienteGerenciarActivity.this,ListarClienteActivity.class);
+            startActivity(Main);*/
+        }
+        catch(SQLException ex){
+            Toast.makeText(getBaseContext(), sql.toString() + "Erro = "+ ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -243,8 +272,7 @@ public class DetalheEstacaoActivity extends AppCompatActivity {
         }
         if (id == R.id.favorite){
             // inicio implementação lista de favoritos
-          favoritarEstacao();
-            //Toast.makeText(getApplicationContext(), "Estação adicionada aos favoritos", Toast.LENGTH_LONG).show();
+                favoritarEstacao();
 
             return  true;
 
